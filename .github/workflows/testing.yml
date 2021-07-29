@@ -1,0 +1,24 @@
+name: UI Testing
+on:
+  push:
+    branches: ["*"]
+    tags-ignore: ["*"]
+  pull_request:
+    branches: ["*"]
+  workflow_dispatch: {}
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Setup Environment
+      run: yarn install
+    - name: Run Tests
+      run: yarn test
