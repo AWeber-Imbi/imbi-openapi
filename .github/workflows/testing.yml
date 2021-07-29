@@ -1,4 +1,4 @@
-name: UI Testing
+name: Tests
 on:
   push:
     branches: ["*"]
