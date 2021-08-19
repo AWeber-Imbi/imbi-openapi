@@ -21,8 +21,13 @@ paths:
                   value:
                     - project_link_type: documentation
                       icon_class: fab fa-bool
+                      is_primary_repository: false
                     - project_link_type: grafana
-                      icon_class: fab fa-graph
+                      icon_class: fab fa-grafana
+                      is_primary_repository: false
+                    - project_link_type: gitlab
+                      icon_class: fab fa-gitlab
+                      is_primary_repository: true
             application/msgpack:
               <<: *responseContent
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
@@ -107,11 +112,13 @@ components:
         last_modified_by: ~
         link_type: documentation
         icon_class: fab fa-bool
+        is_primary_repository: false
     write:
       summary: A full link type record
       value:
         link_type: documentation
         icon_class: fab fa-bool
+        is_primary_repository: false
 
   responses:
     Success:

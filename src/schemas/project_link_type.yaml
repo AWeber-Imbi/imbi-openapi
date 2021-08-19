@@ -18,6 +18,9 @@ read:
     icon_class:
       description: Font Awesome UI icon class
       type: string
+    is_primary_repository:
+      description: Is this type of link for the primary source-code repository?
+      type: boolean
   additionalProperties: false
 
 write:
