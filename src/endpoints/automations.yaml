@@ -1,7 +1,7 @@
 gitlab:
   create:
     post:
-      summary: Create GitLab repo
+      summary: Create GitLab Project
       description: |
         Create a new GitLab repository for a specific project.
 
@@ -34,5 +34,41 @@ gitlab:
                     type: string
                   gitlab_project_id:
                     type: integer
+        '400':
+          description: Request could not be processed
+
+sonarqube:
+  create:
+    post:
+      summary: Create Sonarqube Project
+      description: |
+        Creates a new Sonarqube project using info from the project, including the GitLab Project ID.
+      tags:
+        - Automations
+      requestBody:
+        description: Project details
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                project_id:
+                  description: Imbi project ID to create the Sonarqube Project for
+                  type: integer
+              required:
+                - project_id
+      responses:
+        '200':
+          description: Sonarqube project was created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sonarqube_dashboard:
+                    type: string
+                    format: url
+                  sonarqube_project_key:
+                    type: string
         '400':
           description: Request could not be processed
