@@ -8,7 +8,7 @@
   "author": "Gavin M. Roy",
   "license": "BSD-3-Clause",
   "scripts": {
-    "build": "yarn redoc && swagger-cli bundle src/main.yaml  --outfile build/openapi.yaml --type yaml",
+    "build": "mkdir -p build && yarn redoc && swagger-cli bundle src/main.yaml  --outfile build/openapi.yaml --type yaml",
     "prettier": "prettier -w src",
     "redoc": "cp node_modules/redoc/bundles/redoc.standalone.js build/redoc.standalone.js",
     "test": "yarn build && swagger-cli validate build/openapi.yaml"
