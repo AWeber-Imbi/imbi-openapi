@@ -25,7 +25,7 @@ paths:
         - name: order
           in: query
           description: |-
-            Specify the order to return entries by using the `recored_at` value.
+            Specify the order to return entries by using the `recorded_at` value.
           schema:
             type: string
             enum:
