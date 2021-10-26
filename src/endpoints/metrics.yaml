@@ -33,7 +33,7 @@ paths:
           description: OK
           content:
             "text/plain; version=0.0.4":
-              example: |-
+              examples: |-
                 # TYPE http_requests_total counter
                 http_requests_total{endpoint="dashboard",hostname="example",method="GET",status="200"} 1
                 http_requests_total{endpoint="environments",hostname="example",method="GET",status="200"} 2

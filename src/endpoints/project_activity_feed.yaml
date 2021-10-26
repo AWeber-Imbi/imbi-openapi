@@ -45,7 +45,7 @@ paths:
                     value:
                       description: If the action was `updated fact`, the value of the updated fact
                       type: string
-              example:
+              examples:
                 - when: 2021-03-17 23:02:00.912503-04
                   who: Gavin Roy
                   username: gavinr

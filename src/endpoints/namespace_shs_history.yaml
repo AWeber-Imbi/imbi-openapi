@@ -24,7 +24,7 @@ paths:
                     health_score:
                       description: The aggregate health score for the namespace
                       type: number
-              example:
+              examples:
                 - namespace_id: 1
                   scored_on: 2021-01-01
                   health_score: 10.53

@@ -28,7 +28,7 @@ paths:
                     score:
                       description: The username of the user who acted on the project
                       type: number
-              example:
+              examples:
                 - date: 2021-03-01
                   score: 70
                 - date: 2021-03-12

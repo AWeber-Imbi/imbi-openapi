@@ -21,7 +21,7 @@ paths:
                     health_score:
                       description: The aggregate health score
                       type: number
-              example:
+              examples:
                 - scored_on: 2021-01-01
                   health_score: 10.53
                 - scored_on: 2021-02-01

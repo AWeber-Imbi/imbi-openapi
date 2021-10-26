@@ -15,7 +15,7 @@ paths:
             application/json: &statusAvailable
               schema:
                 $ref: '#/components/schemas/status'
-              example:
+              examples:
                 $ref: '#/components/examples/statusOk/value'
             application/msgpack:
               <<: *statusAvailable
@@ -25,7 +25,7 @@ paths:
             application/json: &statusUnavailable
               schema:
                 $ref: '#/components/schemas/status'
-              example:
+              examples:
                 $ref: '#/components/examples/statusError/value'
             application/msgpack:
               <<: *statusUnavailable

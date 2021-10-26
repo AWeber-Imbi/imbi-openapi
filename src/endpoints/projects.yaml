@@ -73,7 +73,7 @@ paths:
                 type: array
                 items:
                   $ref: '../schemas/project.yaml#/read'
-              example:
+              examples:
                 records:
                   summary: Multiple project records
                   value:
@@ -107,7 +107,7 @@ paths:
           application/json: &postContent
             schema:
               $ref: '../schemas/project.yaml#/write'
-            example:
+            examples:
               record:
                 $ref: '#/components/examples/write'
           application/msgpack:
@@ -212,7 +212,7 @@ components:
         application/json: &responsesSuccess
           schema:
             $ref: '../schemas/project.yaml#/read'
-          example:
+          examples:
             record:
               $ref: '#/components/examples/read'
         application/msgpack:
