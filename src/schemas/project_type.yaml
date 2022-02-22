@@ -67,6 +67,7 @@ write:
     gitlab_project_prefix:
       description: Prefix for this project type in GitLab
       type: string
+      nullable: true
   required:
     - name
     - plural_name
