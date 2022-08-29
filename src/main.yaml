@@ -209,6 +209,7 @@ x-tagGroups:
       - Project Dependencies
       - Project Facts
       - Project Fact Types
+      - Project Fact History
       - Project Links
       - Project Scores
       - Project URLs
