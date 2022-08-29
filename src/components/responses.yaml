@@ -5,13 +5,13 @@ Conflict:
     application/json: &responsesConflict
       schema:
         $ref: './schemas.yaml#/problemDetail'
-      example:
+      examples:
         problemDetail:
-          description: An example of the response body
+          summary: '409'
           value:
             type: HTTPError
             traceback: []
-            message: 'HTTP 409: Conflict'
+            message: 'HTTP 409 Conflict'
     application/msgpack:
       <<: *responsesConflict
 
@@ -24,13 +24,13 @@ NotFound:
     application/json: &responsesNotFound
       schema:
         $ref: './schemas.yaml#/problemDetail'
-      example:
+      examples:
         problemDetail:
-          description: An example of the response body
+          summary: '404'
           value:
             type: HTTPError
             traceback: []
-            message: 'HTTP 404: Resource not found'
+            message: 'HTTP 404 Resource not found'
     application/msgpack:
       <<: *responsesNotFound
 
@@ -47,9 +47,9 @@ RateLimited:
     application/json: &responsesRateLimited
       schema:
         $ref: './schemas.yaml#/problemDetail'
-      example:
+      examples:
         problemDetail:
-          description: An example of the response body
+          summary: '429'
           value:
             type: HTTPError
             traceback: []
@@ -66,9 +66,9 @@ RequestError:
     application/json: &responsesRequestError
       schema:
         $ref: './schemas.yaml#/problemDetail'
-      example:
+      examples:
         problemDetail:
-          description: An example of the response body
+          summary: '400'
           value:
             type: HTTPError
             traceback: []
@@ -82,9 +82,9 @@ Unauthorized:
     application/json: &responsesRequestError
       schema:
         $ref: './schemas.yaml#/problemDetail'
-      example:
+      examples:
         problemDetail:
-          description: An example of the response body
+          summary: '401'
           value:
             type: HTTPError
             traceback: []
