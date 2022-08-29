@@ -12,7 +12,9 @@ paths:
               $ref: '../schemas/authentication_token.yaml#/write'
             examples:
               record:
-                name: Test Integration
+                summary: New token
+                value:
+                  name: Test Integration
           application/msgpack:
             <<: *postContent
       responses:

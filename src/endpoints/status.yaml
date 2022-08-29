@@ -16,7 +16,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/status'
               examples:
-                $ref: '#/components/examples/statusOk/value'
+                record:
+                  $ref: '#/components/examples/statusOk'
             application/msgpack:
               <<: *statusAvailable
         '503':
@@ -26,7 +27,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/status'
               examples:
-                $ref: '#/components/examples/statusError/value'
+                record:
+                  $ref: '#/components/examples/statusError'
             application/msgpack:
               <<: *statusUnavailable
 
