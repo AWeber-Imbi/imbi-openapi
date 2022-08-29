@@ -79,6 +79,8 @@ paths:
     { '$ref': 'endpoints/project_facts.yaml#/paths/collection' }
   /projects/{id}/fact-types:
     { '$ref': 'endpoints/project_fact_types.yaml#/paths/collection' }
+  /projects/{id}/fact-history:
+    { '$ref': 'endpoints/project_fact_history.yaml#/paths/collection'}
   /projects/{id}/feed:
     { '$ref': 'endpoints/project_activity_feed.yaml#/paths/collection' }
   /projects/{id}/links:
@@ -156,6 +158,8 @@ tags:
     description: Endpoints for managing the current facts describing the project
   - name: Project Fact Types
     description: An endpoint for returning the project fact types for a specific project
+  - name: Project Fact History
+    description: Endpoint for returning the project fact history for a specific project
   - name: Project Links
     description: Endpoints used to manage links to external resources for a project
   - name: Project Scores

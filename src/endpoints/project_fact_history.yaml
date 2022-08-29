@@ -1,0 +1,83 @@
+paths:
+  collection:
+    get:
+      description: Retrieve the fact history for the given project
+      summary: Get Fact History
+      tags: [ Project Fact History ]
+      parameters:
+        - name: id
+          in: path
+          description: Project ID
+          required: true
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Limit the number of records returned
+          schema:
+            type: number
+        - name: offset
+          in: query
+          description: The starting offset for the records returned
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Success
+          headers:
+            Cache-Control: { $ref: '../components/headers.yaml#/Cache-Control' }
+          content:
+            application/json: &responseContent
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    fact_type_id:
+                      description: The fact type ID
+                      type: number
+                    recorded_at:
+                      description: When the fact was recorded
+                      type: string
+                      format: iso8601-timestamp
+                    recorded_by:
+                      description: The user that set the fact value
+                      type: string
+                    value:
+                      description: The fact value
+                      oneOf:
+                        - type: boolean
+                        - type: integer
+                        - type: number
+                          format: double
+                        - type: string
+                    score:
+                      description: The score for the value of the fact
+                      type: integer
+                    weight:
+                      description: The weight of the score against all the other project facts
+                      type: integer
+                    icon_class:
+                      description: The Font Awesome icon class for the link
+                      type: string
+              examples:
+                records:
+                  summary: Fact history
+                  value:
+                    - fact_type_id: 1
+                      recorded_at: 2021-03-01T12:00:00.000Z
+                      recorded_by: test_user
+                      value: Ansible
+                      score: 100
+                      weight: 5
+                      icon_class: fab ansible
+                    - fact_type_id: 7
+                      recorded_at: 2021-03-01T12:00:01.000Z
+                      recorded_by: test_user
+                      value: GitLab CI
+                      score: 100
+                      weight: 10
+                      icon_class: fab gitlab
+            application/msgpack:
+              <<: *responseContent
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
