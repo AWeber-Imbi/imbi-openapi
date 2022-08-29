@@ -22,16 +22,19 @@ paths:
                       description: The aggregate health score
                       type: number
               examples:
-                - scored_on: 2021-01-01
-                  health_score: 10.53
-                - scored_on: 2021-02-01
-                  health_score: 21.53
-                - scored_on: 2021-03-01
-                  health_score: 31.43
-                - scored_on: 2021-04-01
-                  health_score: 51.49
-                - scored_on: 2021-05-01
-                  health_score: 72.5
+                records:
+                  summary: System-wide stack health score by month
+                  value:
+                    - scored_on: 2021-01-01
+                      health_score: 10.53
+                    - scored_on: 2021-02-01
+                      health_score: 21.53
+                    - scored_on: 2021-03-01
+                      health_score: 31.43
+                    - scored_on: 2021-04-01
+                      health_score: 51.49
+                    - scored_on: 2021-05-01
+                      health_score: 72.5
             application/msgpack:
               <<: *responseContent
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }

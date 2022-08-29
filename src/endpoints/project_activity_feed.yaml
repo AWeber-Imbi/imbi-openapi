@@ -46,18 +46,24 @@ paths:
                       description: If the action was `updated fact`, the value of the updated fact
                       type: string
               examples:
-                - when: 2021-03-17 23:02:00.912503-04
-                  who: Gavin Roy
-                  username: gavinr
-                  what: updated fact
-                  fact_name: Programming Language
-                  value: ES2015+
-                - when: 2021-03-17 22:55:50.865266-04
-                  who: Gavin Roy
-                  username: gavinr
-                  what: created
-                  fact_name: ~
-                  value: ~
+                updated:
+                  summary: Updated fact
+                  value:
+                    when: 2021-03-17 23:02:00.912503-04
+                    who: Gavin Roy
+                    username: gavinr
+                    what: updated fact
+                    fact_name: Programming Language
+                    value: ES2015+
+                created:
+                  summary: Created project
+                  value:
+                    when: 2021-03-17 22:55:50.865266-04
+                    who: Gavin Roy
+                    username: gavinr
+                    what: created
+                    fact_name: ~
+                    value: ~
             application/msgpack:
               <<: *responseContent
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
