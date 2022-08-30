@@ -104,6 +104,8 @@ paths:
   /status: { $ref: 'endpoints/status.yaml#/paths/status' }
   /ui/automations/gitlab/create:
     { $ref: 'endpoints/automations.yaml#/gitlab/create' }
+  /ui/automations/sentry/create:
+    { $ref: 'endpoints/automations.yaml#/sentry/create' }
 
 tags:
   - name: Activity Feed
