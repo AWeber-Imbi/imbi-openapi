@@ -31,6 +31,10 @@ read:
       description: Optional name of associated GitLab group
       type: string
       nullable: true
+    sentry_team_slug:
+      description: Optional name of associated Sentry team
+      type: string
+      nullable: true
   required:
     - name
     - slug
@@ -59,6 +63,10 @@ write:
       nullable: true
     gitlab_group_name:
       description: Optional name of associated GitLab group
+      type: string
+      nullable: true
+    sentry_team_slug:
+      description: Optional name of associated Sentry team
       type: string
       nullable: true
   required:
