@@ -37,6 +37,37 @@ gitlab:
         '400':
           description: Request could not be processed
 
+sentry:
+  create:
+    post:
+      summary: Create Sentry Project
+      description: Creates a new Sentry project using the info from the project.
+      tags:
+        - Automations
+      requestBody:
+        description: Project details
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                project_id:
+                  description: Imbi project ID to create the Sonarqube Project for
+                  type: integer
+              required:
+                - project_id
+      responses:
+        '200':
+          description: Sentry project was created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sentry_project_url:
+                    type: string
+                    format: url
+
 sonarqube:
   create:
     post:

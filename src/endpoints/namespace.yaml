@@ -23,6 +23,7 @@ paths:
                       name: Platform Support Engineering
                       slug: PSE
                       icon_class: fas fa-blind
+                      sentry_team_slug: pse
                       maintained_by:
                         - Developers
                         - Operations
@@ -118,16 +119,18 @@ components:
         name: Platform Support Engineering
         slug: PSE
         icon_class: fas fa-blind
-        maintainted_by:
+        maintained_by:
           - Developers
           - Operations
+        sentry_team_slug: pse
     write:
       summary: A full namespace record
       value:
         name: Platform Support Engineering
         slug: PSE
         icon_class: fas fa-blind
-        maintainted_by:
+        sentry_team_slug: pse
+        maintained_by:
           - Developers
           - Operations
 
