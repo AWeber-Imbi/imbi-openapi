@@ -91,6 +91,8 @@ paths:
     { '$ref': 'endpoints/project_dependencies.yaml#/paths/collection' }
   /projects/{id}/dependencies/{dependency_id}:
     { '$ref': 'endpoints/project_dependencies.yaml#/paths/manage' }
+  /projects/{id}/secrets:
+    { $ref: 'endpoints/project_secrets.yaml#/paths/collection' }
   /projects/{id}/score-history:
     { '$ref': 'endpoints/project_score_history.yaml#/paths/collection' }
   /projects/{id}/urls:
