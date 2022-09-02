@@ -1,0 +1,33 @@
+read:
+  title: Project Note
+  description: User generated note about a project
+  type: object
+  properties:
+    id:
+      description: The note identifier
+      type: integer
+    content:
+      description: The note content
+      type: string
+    created_by:
+      description: The user that created the note
+      type: string
+    updated_by:
+      description: The user that most recently modified the note
+      type: string
+      nullable: true
+  required:
+    - content
+    - created_by
+    - id
+
+write:
+  title: Project Note
+  description: User generated note about a project
+  type: object
+  properties:
+    content:
+      description: The note content
+      type: string
+  required:
+    - content

@@ -13,8 +13,14 @@ Last-Modified:
 Link:
   description: |
     Links to related resources, in the format defined by
-    [RFC 5988](https://tools.ietf.org/html/rfc5988#section-5).
-    This will include a link with relation type `canonical` with the
-    canonical link to the item.
+    [RFC 5988](https://tools.ietf.org/html/rfc5988#section-5).  The following
+    link relation types are used in this API.
+    
+    | "rel" value | Description                                      |
+    |:-----------:| -----------                                      |
+    | canonical   | the canonical URL for the resource if one exists |
+    | first       | link to the first page in a collection           |
+    | next        | link to the next page in the collection          |
+
   schema:
     type: string

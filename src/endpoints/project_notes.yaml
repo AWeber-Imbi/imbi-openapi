@@ -1,0 +1,110 @@
+components:
+  ProjectId:
+    name: id
+    in: path
+    required: true
+    description: Project ID
+    schema:
+      type: number
+  ProjectNote:
+    description: Success
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/project_note.yaml#/read'
+      application/msgpack:
+        schema:
+          $ref: '../schemas/project_note.yaml#/read'
+
+paths:
+  collection:
+    parameters:
+      - $ref: '#/components/ProjectId'
+    get:
+      summary: Get Collection
+      description: "Retrieve the notes for a project"
+      tags: [Project Notes]
+      parameters:
+        - name: limit
+          description: Maximum number of items to return
+          in: query
+          schema:
+            type: number
+            minimum: 1
+            default: 100
+          required: false
+        - name: page_token
+          description: opaque pagination token
+          in: query
+          schema:
+            type: string
+          required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../schemas/project_note.yaml#/read'
+          headers:
+            Link:
+              $ref: '../components/headers.yaml#/Link'
+    post:
+      summary: Create Record
+      description: "Create a new note for a project"
+      tags: [Project Notes]
+      requestBody:
+        description: Note content
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/project_note.yaml#/write'
+          application/msgpack:
+            schema:
+              $ref: '../schemas/project_note.yaml#/write'
+      responses:
+        '200':
+          $ref: '#/components/ProjectNote'
+  manage:
+    parameters:
+      - $ref: '#/components/ProjectId'
+      - name: note_id
+        description: Unique identifier for the note
+        in: path
+        required: true
+        schema:
+          type: number
+    get:
+      summary: Get Record
+      description: "Retrieve a note by its ID"
+      tags: [Project Notes]
+      responses:
+        '200':
+          $ref: '#/components/ProjectNote'
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }
+    patch:
+      summary: Update Record
+      description: "Update a specific note"
+      tags: [Project Notes]
+      requestBody:
+        $ref: '../components/requests.yaml#/jsonPatch'
+      responses:
+        '200':
+          $ref: '#/components/ProjectNote'
+        '304': { $ref: '../components/responses.yaml#/NoChanges' }
+        '400': { $ref: '../components/responses.yaml#/RequestError' }
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }
+        '409': { $ref: '../components/responses.yaml#/Conflict' }
+    delete:
+      summary: Delete Record
+      description: "Remove a project note"
+      tags: [Project Notes]
+      responses:
+        '204':
+          description: Success
+        '400': { $ref: '../components/responses.yaml#/RequestError' }
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
