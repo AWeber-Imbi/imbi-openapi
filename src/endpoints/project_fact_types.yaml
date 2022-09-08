@@ -50,7 +50,9 @@ paths:
                         type: string
                         enum:
                           - display-as-badge
+                          - display-as-percentage
                           - hidden
+                          - read-only
                       uniqueItems: true
                     enum_values:
                       description: An array of the possible values if the fact type is an enum
@@ -62,7 +64,7 @@ paths:
                       type: number
                       nullable: true
                     max_value:
-                      description: The maximim value if this is a range fact type
+                      description: The maximum value if this is a range fact type
                       type: number
                       nullable: true
                     weight:
