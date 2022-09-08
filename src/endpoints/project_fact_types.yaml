@@ -50,7 +50,9 @@ paths:
                         type: string
                         enum:
                           - display-as-badge
+                          - display-as-percentage
                           - hidden
+                          - read-only
                       uniqueItems: true
                     enum_values:
                       description: An array of the possible values if the fact type is an enum

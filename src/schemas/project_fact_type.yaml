@@ -52,6 +52,7 @@ read:
           - display-as-badge
           - display-as-percentage
           - hidden
+          - read-only
       uniqueItems: true
     weight:
       description: The weight of the fact type when computing a project score
@@ -104,6 +105,7 @@ write:
           - display-as-badge
           - display-as-percentage
           - hidden
+          - read-only
       uniqueItems: true
     weight:
       description: The weight of the fact type when computing a project score
