@@ -64,7 +64,7 @@ paths:
                       type: number
                       nullable: true
                     max_value:
-                      description: The maximim value if this is a range fact type
+                      description: The maximum value if this is a range fact type
                       type: number
                       nullable: true
                     weight:
