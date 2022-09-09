@@ -1,0 +1,15 @@
+jsonPatch:
+  description: JSON Patch Payload
+  content:
+    application/json:
+      schema:
+        $ref: './schemas.yaml#/jsonPatch'
+    application/msgpack:
+      schema:
+        $ref: './schemas.yaml#/jsonPatch'
+    application/json-patch+json:
+      schema:
+        $ref: './schemas.yaml#/jsonPatch'
+    application/json-patch+msgpack:
+      schema:
+        $ref: './schemas.yaml#/jsonPatch'

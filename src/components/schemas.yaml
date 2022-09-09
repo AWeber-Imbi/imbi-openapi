@@ -1,4 +1,16 @@
 ---
+recursiveType:
+  description: The value to add, replace, or test
+  oneOf:
+    - type: array
+      items:
+        $ref: '#/recursiveType'
+    - type: boolean
+    - type: number
+    - type: object
+    - type: string
+  nullable: true
+
 jsonPatch:
   title: JSON Patch
   description: A JSONPatch document as defined by RFC 6902
@@ -17,14 +29,7 @@ jsonPatch:
             type: string
             enum: [add, replace, test]
           value:
-            description: The value to add, replace or test
-            oneOf:
-              - type: array
-              - type: boolean
-              - type: number
-              - type: object
-              - type: string
-            nullable: true
+            $ref: '#/recursiveType'
         required:
           - path
           - op
