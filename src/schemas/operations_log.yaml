@@ -91,7 +91,6 @@ write:
         - Rolled Back
         - Scaled
         - Upgraded
-      nullable: true
     description:
       description: The single line description of the change
       type: string
