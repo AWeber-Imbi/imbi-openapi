@@ -13,7 +13,7 @@ recursiveType:
 
 jsonPatch:
   title: JSON Patch
-  description: A JSONPatch document as defined by RFC 6902
+  description: A JSONPatch document as defined by [RFC 6902](https://www.rfc-editor.org/rfc/rfc6902)
   type: array
   items:
     anyOf:
@@ -69,7 +69,7 @@ jsonPatch:
           - op
   example:
     - op: replace
-      path: icon_class
+      path: "/icon_class"
       value: fas fa-microscope
 
 problemDetail:
