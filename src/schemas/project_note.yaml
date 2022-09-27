@@ -6,6 +6,9 @@ read:
     id:
       description: The note identifier
       type: integer
+    project_id:
+      description: Identifies the project that this note is associated with
+      type: integer
     content:
       description: The note content
       type: string
@@ -20,6 +23,7 @@ read:
     - content
     - created_by
     - id
+    - project_id
 
 write:
   title: Project Note
