@@ -12,9 +12,17 @@ components:
       application/json:
         schema:
           $ref: '../schemas/project_note.yaml#/read'
+        example: &exampleNote
+          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at libero mauris. Donec a erat malesuada dolor congue ullamcorper non et risus. Etiam vehicula bibendum convallis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse posuere purus in odio bibendum cursus. Curabitur vitae iaculis urna. Mauris in urna luctus, interdum sapien nec, ultrices nisl. Aenean pulvinar blandit massa, et sodales nibh accumsan vel. Sed a arcu nisi. Nulla efficitur diam eu diam finibus faucibus eget in dolor. Donec quis euismod nisi. Donec placerat, leo nec elementum pretium, tellus lorem tristique ante, eget malesuada justo diam eu magna. Pellentesque mattis bibendum dapibus. Duis sed nisl eu erat fermentum vehicula vel a urna. Nullam lectus neque, egestas id eleifend et, tincidunt ut est. In sollicitudin elementum pharetra."
+          created_by: test
+          id: 1
+          project_id: 1
+          updated_by: null
       application/msgpack:
         schema:
           $ref: '../schemas/project_note.yaml#/read'
+        example:
+          <<: *exampleNote
 
 paths:
   collection:
@@ -48,6 +56,8 @@ paths:
                 type: array
                 items:
                   $ref: '../schemas/project_note.yaml#/read'
+              example:
+                - *exampleNote
           headers:
             Link:
               $ref: '../components/headers.yaml#/Link'
@@ -61,9 +71,13 @@ paths:
           application/json:
             schema:
               $ref: '../schemas/project_note.yaml#/write'
+            example:
+              content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at libero mauris. Donec a erat malesuada dolor congue ullamcorper non et risus. Etiam vehicula bibendum convallis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse posuere purus in odio bibendum cursus. Curabitur vitae iaculis urna. Mauris in urna luctus, interdum sapien nec, ultrices nisl. Aenean pulvinar blandit massa, et sodales nibh accumsan vel. Sed a arcu nisi. Nulla efficitur diam eu diam finibus faucibus eget in dolor. Donec quis euismod nisi. Donec placerat, leo nec elementum pretium, tellus lorem tristique ante, eget malesuada justo diam eu magna. Pellentesque mattis bibendum dapibus. Duis sed nisl eu erat fermentum vehicula vel a urna. Nullam lectus neque, egestas id eleifend et, tincidunt ut est. In sollicitudin elementum pharetra."
           application/msgpack:
             schema:
               $ref: '../schemas/project_note.yaml#/write'
+            example:
+              content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at libero mauris. Donec a erat malesuada dolor congue ullamcorper non et risus. Etiam vehicula bibendum convallis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse posuere purus in odio bibendum cursus. Curabitur vitae iaculis urna. Mauris in urna luctus, interdum sapien nec, ultrices nisl. Aenean pulvinar blandit massa, et sodales nibh accumsan vel. Sed a arcu nisi. Nulla efficitur diam eu diam finibus faucibus eget in dolor. Donec quis euismod nisi. Donec placerat, leo nec elementum pretium, tellus lorem tristique ante, eget malesuada justo diam eu magna. Pellentesque mattis bibendum dapibus. Duis sed nisl eu erat fermentum vehicula vel a urna. Nullam lectus neque, egestas id eleifend et, tincidunt ut est. In sollicitudin elementum pharetra."
       responses:
         '200':
           $ref: '#/components/ProjectNote'
@@ -90,10 +104,28 @@ paths:
       description: "Update a specific note"
       tags: [Project Notes]
       requestBody:
-        $ref: '../components/requests.yaml#/jsonPatch'
+        description: JSON Patch document as defined by [RFC 6902](https://www.rfc-editor.org/rfc/rfc6902)
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas.yaml#/jsonPatch'
+            example:
+              - op: replace
+                path: "/content"
+                value: "Bacon ipsum dolor amet alcatra tongue shankle, beef ribs ribeye filet mignon drumstick landjaeger capicola andouille pancetta meatloaf cupim bresaola rump. Pork belly ham turkey, salami prosciutto ribeye beef ribs swine ground round pork loin leberkas tri-tip pig cow pastrami. Prosciutto tri-tip strip steak cow. Shankle hamburger kevin, pig meatloaf burgdoggen kielbasa ball tip pastrami tongue sirloin corned beef turducken flank porchetta. Filet mignon bacon chislic, chicken burgdoggen cow pig. Landjaeger chicken jowl kielbasa bresaola bacon. Spare ribs turkey prosciutto boudin pastrami pancetta leberkas."
       responses:
         '200':
-          $ref: '#/components/ProjectNote'
+          description: Note was updated
+          content:
+            application/json: &updatedNote
+              schema:
+                $ref: '../schemas/project_note.yaml#/read'
+              example:
+                <<: *exampleNote
+                content: "Bacon ipsum dolor amet alcatra tongue shankle, beef ribs ribeye filet mignon drumstick landjaeger capicola andouille pancetta meatloaf cupim bresaola rump. Pork belly ham turkey, salami prosciutto ribeye beef ribs swine ground round pork loin leberkas tri-tip pig cow pastrami. Prosciutto tri-tip strip steak cow. Shankle hamburger kevin, pig meatloaf burgdoggen kielbasa ball tip pastrami tongue sirloin corned beef turducken flank porchetta. Filet mignon bacon chislic, chicken burgdoggen cow pig. Landjaeger chicken jowl kielbasa bresaola bacon. Spare ribs turkey prosciutto boudin pastrami pancetta leberkas."
+                updated_by: test
+            application/msgpack:
+              <<: *updatedNote
         '304': { $ref: '../components/responses.yaml#/NoChanges' }
         '400': { $ref: '../components/responses.yaml#/RequestError' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
