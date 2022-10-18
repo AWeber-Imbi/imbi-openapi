@@ -106,7 +106,7 @@ paths:
       requestBody:
         description: JSON Patch document as defined by [RFC 6902](https://www.rfc-editor.org/rfc/rfc6902)
         content:
-          application/json:
+          application/json-patch+json:
             schema:
               $ref: '../components/schemas.yaml#/jsonPatch'
             example:
