@@ -104,7 +104,7 @@ paths:
       description: "Update a specific note"
       tags: [Project Notes]
       requestBody:
-        $ref: '../components/requests.yaml#jsonPatch'
+        $ref: '../components/requests.yaml#/jsonPatch'
       responses:
         '200':
           description: Note was updated
