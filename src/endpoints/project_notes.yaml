@@ -104,15 +104,7 @@ paths:
       description: "Update a specific note"
       tags: [Project Notes]
       requestBody:
-        description: JSON Patch document as defined by [RFC 6902](https://www.rfc-editor.org/rfc/rfc6902)
-        content:
-          application/json:
-            schema:
-              $ref: '../components/schemas.yaml#/jsonPatch'
-            example:
-              - op: replace
-                path: "/content"
-                value: "Bacon ipsum dolor amet alcatra tongue shankle, beef ribs ribeye filet mignon drumstick landjaeger capicola andouille pancetta meatloaf cupim bresaola rump. Pork belly ham turkey, salami prosciutto ribeye beef ribs swine ground round pork loin leberkas tri-tip pig cow pastrami. Prosciutto tri-tip strip steak cow. Shankle hamburger kevin, pig meatloaf burgdoggen kielbasa ball tip pastrami tongue sirloin corned beef turducken flank porchetta. Filet mignon bacon chislic, chicken burgdoggen cow pig. Landjaeger chicken jowl kielbasa bresaola bacon. Spare ribs turkey prosciutto boudin pastrami pancetta leberkas."
+        $ref: '../components/requests.yaml#/jsonPatch'
       responses:
         '200':
           description: Note was updated
