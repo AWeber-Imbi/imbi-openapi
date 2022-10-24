@@ -168,8 +168,12 @@ paths:
           content:
             application/json: &responseIndexSuccess
               schema:
-                status: ok
-                message: Queued 42 projects for indexing
+                title: Success
+                description: How many project were queued for indexing
+                type: object
+                properties:
+                  status: ok
+                  message: Queued 42 projects for indexing
             application/msgpack:
               <<: *responseIndexSuccess
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
