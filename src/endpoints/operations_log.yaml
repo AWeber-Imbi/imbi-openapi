@@ -206,8 +206,12 @@ paths:
           content:
             application/json: &responseIndexSuccess
               schema:
-                status: ok
-                message: Queued 1042 operations log entries for indexing
+                title: Success
+                description: How many operations log entries were queued for indexing
+                type: object
+                properties:
+                  status: ok
+                  message: Queued 1042 operations log entries for indexing
             application/msgpack:
               <<: *responseIndexSuccess
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
