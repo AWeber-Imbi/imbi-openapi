@@ -156,6 +156,23 @@ paths:
         required: true
         schema:
           type: number
+  search:
+    post:
+      summary: Index all projects
+      description: |-
+        Queue all projects to be added to the opensearch index
+      tags: [Projects]
+      responses:
+        '200':
+          description: The request to index all projects was successful
+          content:
+            application/json: &responseIndexSuccess
+              schema:
+                status: ok
+                message: Queued 42 projects for indexing
+            application/msgpack:
+              <<: *responseIndexSuccess
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
 
 components:
   examples:

@@ -105,6 +105,8 @@ paths:
     { '$ref': 'endpoints/project_urls.yaml#/paths/collection' }
   /projects/{id}/urls/{environment}:
     { '$ref': 'endpoints/project_urls.yaml#/paths/manage' }
+  /projects/build-search-index:
+    { '$ref': 'endpoints/projects.yaml#/paths/search' }
   /reports/namespace-shs-history:
     { $ref: 'endpoints/namespace_shs_history.yaml#/paths/collection' }
   /reports/system-shs-history:
