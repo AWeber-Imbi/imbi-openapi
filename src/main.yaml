@@ -54,6 +54,8 @@ paths:
   /operations-log: { '$ref': 'endpoints/operations_log.yaml#/paths/collection' }
   /operations-log/{id}:
     { '$ref': 'endpoints/operations_log.yaml#/paths/manage' }
+  /operations-log/build-search-index:
+    { '$ref': 'endpoints/operations_log.yaml#/paths/search'}
   /permissions: { $ref: 'endpoints/permissions.yaml#/paths/collection' }
   /project-fact-types:
     { $ref: 'endpoints/project_fact_type.yaml#/paths/collection' }
