@@ -194,6 +194,32 @@ paths:
           type: string
           pattern: '^\d+$'
 
+  search:
+    post:
+      summary: Index the operations log
+      description: |-
+        Queue all operations log entries to be added to the opensearch index
+      tags: [Operations Log]
+      responses:
+        '200':
+          description: The request to index the operations log was successful
+          content:
+            application/json: &responseIndexSuccess
+              schema:
+                title: Success
+                description: How many operations log entries were queued for indexing
+                type: object
+                properties:
+                  status:
+                    description: Whether the operation succeeded
+                    type: string
+                  message:
+                    description: How many operations log entries were queued for indexing
+                    type: string
+            application/msgpack:
+              <<: *responseIndexSuccess
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+
 components:
   examples:
     read:
