@@ -172,8 +172,12 @@ paths:
                 description: How many project were queued for indexing
                 type: object
                 properties:
-                  status: ok
-                  message: Queued 42 projects for indexing
+                  status:
+                    description: Whether the operation succeeded
+                    type: string
+                  message:
+                    description: How many projects were queued for indexing
+                    type: string
             application/msgpack:
               <<: *responseIndexSuccess
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }

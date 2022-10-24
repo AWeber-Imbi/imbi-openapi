@@ -210,8 +210,12 @@ paths:
                 description: How many operations log entries were queued for indexing
                 type: object
                 properties:
-                  status: ok
-                  message: Queued 1042 operations log entries for indexing
+                  status:
+                    description: Whether the operation succeeded
+                    type: string
+                  message:
+                    description: How many operations log entries were queued for indexing
+                    type: string
             application/msgpack:
               <<: *responseIndexSuccess
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
