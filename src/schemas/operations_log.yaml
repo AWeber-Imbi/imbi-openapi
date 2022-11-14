@@ -36,6 +36,11 @@ read:
         - Rolled Back
         - Scaled
         - Upgraded
+    type:
+      description: The entry type for this item
+      type: string
+      enum:
+        - OperationsLogEntry
     description:
       description: The single line description of the change
       type: string

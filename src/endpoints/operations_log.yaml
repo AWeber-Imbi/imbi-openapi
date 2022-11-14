@@ -94,6 +94,7 @@ paths:
                     - id: 1
                       recorded_at: 2021-05-21T18:39:24.197537
                       recorded_by: gavinr
+                      type: OperationsLogEntry
                       completed_at: ~
                       project_id: 100
                       environment: Testing
@@ -106,6 +107,7 @@ paths:
                     - id: 2
                       recorded_at: 2021-05-21T18:42:00
                       recorded_by: gavinr
+                      type: OperationsLogEntry
                       completed_at: ~
                       project_id: 100
                       environment: Staging
@@ -118,6 +120,7 @@ paths:
                     - id: 3
                       recorded_at: 2021-05-21T19:00:00
                       recorded_by: gavinr
+                      type: OperationsLogEntry
                       completed_at: ~
                       project_id: 100
                       environment: Staging
@@ -228,6 +231,7 @@ components:
         id: 1
         recorded_at: 2021-05-21T18:39:24.197537
         recorded_by: gavinr
+        type: OperationsLogEntry
         completed_at: ~
         project_id: 100
         environment: Testing
