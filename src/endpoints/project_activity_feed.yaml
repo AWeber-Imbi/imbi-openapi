@@ -22,6 +22,11 @@ paths:
                   type: object
                   description: Feed Item Entry
                   properties:
+                    type:
+                      description: Describes the format of this entry
+                      type: string
+                      enum:
+                        - ProjectFeedEntry
                     when:
                       description: The timestamp of the entry
                       type: string
@@ -50,12 +55,14 @@ paths:
                   summary: Feed entries
                   value:
                     - when: 2021-03-17 23:02:00.912503-04
+                      type: ProjectFeedEntry
                       who: Gavin Roy
                       username: gavinr
                       what: updated fact
                       fact_name: Programming Language
                       value: ES2015+
                     - when: 2021-03-17 22:55:50.865266-04
+                      type: ProjectFeedEntry
                       who: Gavin Roy
                       username: gavinr
                       what: created
