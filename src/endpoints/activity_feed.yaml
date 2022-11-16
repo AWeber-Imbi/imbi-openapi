@@ -26,6 +26,11 @@ paths:
                   type: object
                   description: Feed Item Entry
                   properties:
+                    type:
+                      description: Describes the format of this entry
+                      type: string
+                      enum:
+                        - ProjectFeedEntry
                     when:
                       description: The timestamp of the entry
                       type: string
@@ -66,6 +71,7 @@ paths:
                   summary: IMBI project changes
                   value:
                     - when: 2021-05-21 16:43:08.639661-04
+                      type: ProjectFeedEntry
                       namespace: Example
                       namespace_id: 1
                       project_id: 1
@@ -76,6 +82,7 @@ paths:
                       email_address: gmr@imbi.co
                       what: updated facts
                     - when: 2021-05-21 16:41:06.423535-04
+                      type: ProjectFeedEntry
                       namespace: Example
                       namespace_id: 1
                       project_id: 1
@@ -86,6 +93,7 @@ paths:
                       email_address: gmr@imbi.co
                       what: updated
                     - when: 2021-05-20 16:30:21.987839-04
+                      type: ProjectFeedEntry
                       namespace: Example
                       namespace_id: 1
                       project_id: 1
