@@ -21,6 +21,7 @@ paths:
                 items:
                   oneOf:
                     - $ref: '../schemas/activity_feed.yaml#/read'
+                    - $ref: '../schemas/operations_log.yaml#/read'
               examples:
                 records:
                   summary: Feed entries
@@ -32,6 +33,20 @@ paths:
                       what: updated fact
                       fact_name: Programming Language
                       value: ES2015+
+                    - id: 1
+                      when: 2021-03-17 23:00:01.520394-04
+                      recorded_by: gavinr
+                      email_address: gavinr@example.com
+                      type: OperationsLogEntry
+                      completed_at: ~
+                      project_id: 1
+                      project_name: Imbi UI
+                      environment: Testing
+                      change_type: Deployment
+                      description: Added the Operations Log functionality
+                      notes: ~
+                      ticket_slug: ~
+                      version: 0.0.0
                     - when: 2021-03-17 22:55:50.865266-04
                       type: ProjectFeedEntry
                       who: Gavin Roy
