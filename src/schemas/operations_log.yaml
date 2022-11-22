@@ -11,15 +11,24 @@ read:
       type: string
       format: iso8601-timestamp
     recorded_by:
-      description: The user who recorded the change
+      description: The name of the user who recorded the change
+      type: string
+    email_address:
+      description: The email address of the user who recorded the change
       type: string
     completed_at:
       description: If specified, indicates the change occurred over a span of time
       type: string
       format: iso8601-timestamp
+      nullable: true
     project_id:
       description: The ID of the project that was changed
       type: number
+      nullable: true
+    project_name:
+      description: The name of the project that was changed
+      type: string
+      nullable: true
     environment:
       description: The environment that the change occurred in
       type: string
@@ -44,19 +53,24 @@ read:
     description:
       description: The single line description of the change
       type: string
+      nullable: true
     link:
       description: An optional link for additional context to the link
       type: string
+      nullable: true
     notes:
       description: Optional notes for the change in markdown format
       type: string
+      nullable: true
     ticket_slug:
       description: An optional slug of the ticket that the change was made for
       type: string
       pattern: ^[\w-]+$
+      nullable: true
     version:
       description: An optional version that the change was made for
       type: string
+      nullable: true
   additionalProperties: false
 
 write:
