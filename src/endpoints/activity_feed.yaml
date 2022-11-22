@@ -10,11 +10,11 @@ paths:
           description: Limit the number of records returned
           schema:
             type: number
-        - name: offset
+        - name: token
           in: query
-          description: The starting offset for the records returned
+          description: Opaque pagination token
           schema:
-            type: number
+            type: string
       responses:
         '200':
           description: Success
@@ -69,4 +69,7 @@ paths:
                       what: created
             application/msgpack:
               <<: *responseContent
+          headers:
+            Link:
+              $ref: '../components/headers.yaml#/Link'
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }

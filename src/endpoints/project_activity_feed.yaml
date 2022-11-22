@@ -11,6 +11,17 @@ paths:
           required: true
           schema:
             type: number
+        - name: limit
+          in: query
+          description: Limit the number of records returned
+          schema:
+            type: number
+            default: 25
+        - name: token
+          in: query
+          description: Opaque pagination token
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -56,4 +67,7 @@ paths:
                       value: ~
             application/msgpack:
               <<: *responseContent
+          headers:
+            Link:
+              $ref: '../components/headers.yaml#/Link'
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
