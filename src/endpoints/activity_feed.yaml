@@ -23,49 +23,8 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  description: Feed Item Entry
-                  properties:
-                    type:
-                      description: Describes the format of this entry
-                      type: string
-                      enum:
-                        - ProjectFeedEntry
-                    when:
-                      description: The timestamp of the entry
-                      type: string
-                      format: iso8601-timestamp
-                    namespace_id:
-                      description: The namespace ID
-                      type: number
-                    namespace:
-                      description: The namespace of the project
-                      type: string
-                    project_id:
-                      description: The project ID
-                      type: number
-                    project_name:
-                      description: The project name
-                      type: string
-                    project_type:
-                      description: The project type
-                      type: string
-                    who:
-                      description: The username of the user who acted on the project
-                      type: string
-                    display_name:
-                      description: The display name of the user who acted on the project
-                      type: string
-                    email_address:
-                      description: The email address of the user who acted on the project
-                      type: string
-                    what:
-                      description: The action taken by the user
-                      type: string
-                      enum:
-                        - created
-                        - updated
-                        - updated facts
+                  oneOf:
+                    - $ref: '../schemas/activity_feed.yaml#/read'
               examples:
                 records:
                   summary: IMBI project changes

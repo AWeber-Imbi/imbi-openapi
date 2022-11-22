@@ -19,37 +19,8 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  description: Feed Item Entry
-                  properties:
-                    type:
-                      description: Describes the format of this entry
-                      type: string
-                      enum:
-                        - ProjectFeedEntry
-                    when:
-                      description: The timestamp of the entry
-                      type: string
-                      format: iso8601-timestamp
-                    who:
-                      description: The username of the user who acted on the project
-                      type: string
-                    display_name:
-                      description: The display name of the user who acted on the project
-                      type: string
-                    what:
-                      description: The action taken by the user
-                      type: string
-                      enum:
-                        - created
-                        - updated
-                        - updated fact
-                    fact_type:
-                      description: If the action was `updated fact`, the fact that was updated
-                      type: string
-                    value:
-                      description: If the action was `updated fact`, the value of the updated fact
-                      type: string
+                  oneOf:
+                    - $ref: '../schemas/activity_feed.yaml#/read'
               examples:
                 records:
                   summary: Feed entries
