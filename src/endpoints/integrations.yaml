@@ -37,6 +37,12 @@ paths:
                   name:
                     type: string
   manage:
+    parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
     get:
       description: Retrieve a specific integration by name
       summary: Fetch a single integration
