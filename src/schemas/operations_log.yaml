@@ -16,6 +16,9 @@ read:
     email_address:
       description: The email address of the user who recorded the change
       type: string
+    display_name:
+      description: Name of the user that recorded the change
+      type: string
     completed_at:
       description: If specified, indicates the change occurred over a span of time
       type: string
