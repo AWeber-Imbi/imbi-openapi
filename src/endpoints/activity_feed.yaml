@@ -10,11 +10,11 @@ paths:
           description: Limit the number of records returned
           schema:
             type: number
-        - name: offset
+        - name: token
           in: query
-          description: The starting offset for the records returned
+          description: Opaque pagination token
           schema:
-            type: number
+            type: string
       responses:
         '200':
           description: Success
@@ -23,49 +23,9 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  description: Feed Item Entry
-                  properties:
-                    type:
-                      description: Describes the format of this entry
-                      type: string
-                      enum:
-                        - ProjectFeedEntry
-                    when:
-                      description: The timestamp of the entry
-                      type: string
-                      format: iso8601-timestamp
-                    namespace_id:
-                      description: The namespace ID
-                      type: number
-                    namespace:
-                      description: The namespace of the project
-                      type: string
-                    project_id:
-                      description: The project ID
-                      type: number
-                    project_name:
-                      description: The project name
-                      type: string
-                    project_type:
-                      description: The project type
-                      type: string
-                    who:
-                      description: The username of the user who acted on the project
-                      type: string
-                    display_name:
-                      description: The display name of the user who acted on the project
-                      type: string
-                    email_address:
-                      description: The email address of the user who acted on the project
-                      type: string
-                    what:
-                      description: The action taken by the user
-                      type: string
-                      enum:
-                        - created
-                        - updated
-                        - updated facts
+                  oneOf:
+                    - $ref: '../schemas/activity_feed.yaml#/read'
+                    - $ref: '../schemas/operations_log.yaml#/read'
               examples:
                 records:
                   summary: IMBI project changes
@@ -81,17 +41,22 @@ paths:
                       display_name: Gavin M. Roy
                       email_address: gmr@imbi.co
                       what: updated facts
-                    - when: 2021-05-21 16:41:06.423535-04
-                      type: ProjectFeedEntry
-                      namespace: Example
-                      namespace_id: 1
+                    - id: 1
+                      when: 2021-05-21 16:41:06.423535-04
+                      recorded_by: gavinr
+                      email_address: gavinr@example.com
+                      display_name: Gavin M. Roy
+                      type: OperationsLogEntry
+                      completed_at: ~
                       project_id: 1
                       project_name: Imbi
-                      project_type: Web Application
-                      who: gmr
-                      display_name: Gavin M. Roy
-                      email_address: gmr@imbi.co
-                      what: updated
+                      environment: Testing
+                      change_type: Deployment
+                      description: Added the Operations Log functionality
+                      link: https://github.com/aweber/imbi/releases/tag/0.13.0
+                      notes: ~
+                      ticket_slug: JIRA-32768
+                      version: 0.13.0
                     - when: 2021-05-20 16:30:21.987839-04
                       type: ProjectFeedEntry
                       namespace: Example
@@ -105,4 +70,7 @@ paths:
                       what: created
             application/msgpack:
               <<: *responseContent
+          headers:
+            Link:
+              $ref: '../components/headers.yaml#/Link'
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }

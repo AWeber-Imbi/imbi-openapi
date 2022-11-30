@@ -18,9 +18,10 @@ Link:
     
     | "rel" value | Description                                      |
     |:-----------:| -----------                                      |
-    | canonical   | the canonical URL for the resource if one exists |
     | first       | link to the first page in a collection           |
     | next        | link to the next page in the collection          |
+    | self        | the canonical URL for the resource if one exists |
 
   schema:
     type: string
+  style: simple

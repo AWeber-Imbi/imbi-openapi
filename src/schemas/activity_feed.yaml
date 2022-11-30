@@ -1,0 +1,45 @@
+read:
+  type: object
+  title: Project-related change
+  properties:
+    type:
+      description: Describes the format of this entry
+      type: string
+      enum:
+        - ProjectFeedEntry
+    display_name:
+      description: The display name of the user who acted on the project
+      type: string
+    email_address:
+      description: The email address of the user who acted on the project
+      type: string
+      format: email
+    namespace:
+      description: The namespace of the project
+      type: string
+    namespace_id:
+      description: The namespace ID
+      type: integer
+    project_id:
+      description: The project ID
+      type: integer
+    project_name:
+      description: The project name
+      type: string
+    project_type:
+      description: The project type
+      type: string
+    what:
+      description: The action taken by the user
+      type: string
+      enum:
+        - created
+        - updated
+        - updated facts
+    when:
+      description: The timestamp of the entry
+      type: string
+      format: date-time
+    who:
+      description: The username of the user who acted on the project
+      type: string
