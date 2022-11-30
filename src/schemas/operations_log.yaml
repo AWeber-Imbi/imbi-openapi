@@ -58,7 +58,7 @@ read:
       type: string
       nullable: true
     link:
-      description: An optional link for additional context to the link
+      description: An optional link for additional context to the entry
       type: string
       nullable: true
     notes:
@@ -118,7 +118,7 @@ write:
       type: string
       nullable: true
     link:
-      description: An optional link for additional context to the link
+      description: An optional link for additional context to the entry
       type: string
       nullable: true
     notes:
