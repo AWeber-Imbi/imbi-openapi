@@ -36,17 +36,8 @@ paths:
             <<: *postContent
       tags: [Project Facts]
       responses:
-        '200':
+        '204':
           description: The request to record the project fact was successful
-          content:
-            application/json: &responsesSuccess
-              schema:
-                $ref: '../schemas/project_fact_type.yaml#/read'
-              examples:
-                record:
-                  $ref: '#/components/examples/read'
-            application/msgpack:
-              <<: *responsesSuccess
         '400': { $ref: '../components/responses.yaml#/RequestError' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
         '409': { $ref: '../components/responses.yaml#/Conflict' }

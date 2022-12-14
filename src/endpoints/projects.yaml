@@ -70,29 +70,38 @@ paths:
           content:
             application/json: &responseContent
               schema:
-                type: array
-                items:
-                  $ref: '../schemas/project.yaml#/read'
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '../schemas/project.yaml#/read'
+                  rows:
+                    type: number
+                    description: |-
+                      Count of projects matching the query parameter filters, ignoring limit. This can be used to determine whether there are more projects to fetch with offset.
               examples:
-                records:
+                record:
                   summary: Multiple project records
                   value:
-                    - id: 1
-                      created_by: test_user
-                      last_modified_by: ~
-                      namespace_id: 1
-                      namespace: Applications
-                      project_type_id: 1
-                      project_type: HTTP API
-                      name: User Service
-                      slug: user
-                      description: |-
-                        The user service is used to manage user specific data, including profiles and content.
-                      environments:
-                        - Testing
-                        - Staging
-                        - Production
-                      archived: false
+                    data:
+                      - id: 1
+                        created_by: test_user
+                        last_modified_by: ~
+                        namespace_id: 1
+                        namespace: Applications
+                        project_type_id: 1
+                        project_type: HTTP API
+                        name: User Service
+                        slug: user
+                        description: |-
+                          The user service is used to manage user specific data, including profiles and content.
+                        environments:
+                          - Testing
+                          - Staging
+                          - Production
+                        archived: false
+                    rows: 1
             application/msgpack:
               <<: *responseContent
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
