@@ -1,6 +1,12 @@
 ---
+# NB - this is inlined by the swagger bundler that we currently use
+#      so the top-level nullable ends up applying to the root value.
+#      We are also required to have exactly one nullable child in
+#      the oneOf for the OpenAPI validator to allow a null item in
+#      the branch :/
 recursiveType:
   description: The value to add, replace, or test
+  nullable: true
   oneOf:
     - type: array
       items:
@@ -9,7 +15,7 @@ recursiveType:
     - type: number
     - type: object
     - type: string
-  nullable: true
+      nullable: true
 
 jsonPatch:
   title: JSON Patch
