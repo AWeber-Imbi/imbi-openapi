@@ -138,4 +138,5 @@ write:
     - recorded_by
     - environment
     - change_type
+    - description
   additionalProperties: false
