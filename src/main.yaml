@@ -85,6 +85,8 @@ paths:
     { '$ref': 'endpoints/project_fact_history.yaml#/paths/collection'}
   /projects/{id}/feed:
     { '$ref': 'endpoints/project_activity_feed.yaml#/paths/collection' }
+  /projects/{id}/identifiers:
+    { '$ref': 'endpoints/project_identifiers.yaml#/paths/collection'}
   /projects/{id}/links:
     { '$ref': 'endpoints/project_links.yaml#/paths/collection' }
   /projects/{id}/links/{link_type_id}:
