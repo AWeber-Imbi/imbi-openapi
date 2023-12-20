@@ -76,3 +76,71 @@ paths:
                 type: object
             application/msgpack:
               <<: *postResponse
+  entry:
+    parameters:
+      - name: id
+        in: path
+        description: Project ID
+        required: true
+        schema:
+          type: integer
+      - name: integration
+        in: path
+        description: Integration name
+        required: true
+        schema:
+          type: string
+    get:
+      description: Retrieve a specific surrogate identifier for the project
+      summary: Get Identifier
+      tags: [Project Facts]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: &entryResponse
+              schema:
+                type: object
+                properties:
+                  external_id:
+                    type: string
+                  created_by:
+                    type: string
+                  created_at:
+                    type: string
+                    format: iso8601-timestamp
+                  modified_by:
+                    type: string
+                    nullable: true
+                  modified_at:
+                    type: string
+                    format: iso8601-timestamp
+                    nullable: true
+                required:
+                  - external_id
+                  - created_by
+                  - created_at
+                  - modified_by
+                  - modified_at
+                additionalProperties: true
+            application/msgpack:
+              <<: *entryResponse
+    patch:
+      description: Update a specific surrogate identifier for the project
+      summary: Update identifier
+      requestBody:
+        $ref: '../components/requests.yaml#/jsonPatch'
+      responses:
+        '200':
+          description: Updated identifier
+          content:
+            application/json:
+              <<: *entryResponse
+            application/msgpack:
+              <<: *entryResponse
+    delete:
+      description: Remove the surrogate identifier for the project in a specified integration
+      summary: Remove identifier
+      responses:
+        '204':
+          description: Identifier removed
