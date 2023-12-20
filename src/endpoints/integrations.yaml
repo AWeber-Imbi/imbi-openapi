@@ -32,10 +32,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
+                $ref: '../schemas/integration.yaml#/read'
   manage:
     parameters:
       - name: name
@@ -60,5 +57,20 @@ paths:
       tags: [Integrations]
       responses:
         '204': { $ref: '../components/responses.yaml#/RecordRemoved' }
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }
+    patch:
+      description: Update an integration
+      summary: Update an integration
+      tags: [Integrations]
+      requestBody:
+        $ref: '../components/requests.yaml#/jsonPatch'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/integration.yaml#/read'
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
         '404': { $ref: '../components/responses.yaml#/NotFound' }

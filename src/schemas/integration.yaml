@@ -5,25 +5,10 @@ read:
       type: string
     api_endpoint:
       type: string
-    callback_url:
-      type: string
-    authorization_endpoint:
-      type: string
-    token_endpoint:
-      type: string
-    revoke_endpoint:
-      type: string
-    client_id:
-      type: string
   required:
     [
       name,
       api_endpoint,
-      callback_url,
-      authorization_endpoint,
-      token_endpoint,
-      revoke_endpoint,
-      client_id
     ]
   additionalProperties: false
 
@@ -34,32 +19,13 @@ write:
       type: string
     api_endpoint:
       type: string
-    callback_url:
-      type: string
-    authorization_endpoint:
-      type: string
-    token_endpoint:
-      type: string
-    revoke_endpoint:
+    api_secret:
       type: string
       nullable: true
-    client_id:
-      type: string
-    client_secret:
-      type: string
-      nullable: true
-    public_client:
-      type: boolean
   required:
     [
       name,
       api_endpoint,
-      callback_url,
-      authorization_endpoint,
-      token_endpoint,
-      revoke_endpoint,
-      client_id,
-      client_secret,
-      public_client
+      api_secret,
     ]
   additionalProperties: false
