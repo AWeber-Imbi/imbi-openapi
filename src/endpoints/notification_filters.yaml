@@ -1,0 +1,97 @@
+paths:
+  collection:
+    parameters:
+      - name: integration_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: notification_name
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      description: Retrieve the collection of filters for a notification
+      summary: Get notification filters
+      tags: [Integrations]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../schemas/notification_filters.yaml#/read'
+    post:
+      description: Add a new filter to a notification
+      summary: Add notification filter
+      tags: [Integrations]
+      requestBody:
+        description: Filter details
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/notification_filters.yaml#/write'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../schemas/notification_filters.yaml#/write'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/notification_filters.yaml#/read'
+  manage:
+    parameters:
+      - name: integration_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: notification_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: filter_name
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      description: Retrieve a specific filter from a notification by name
+      summary: Fetch a notification filter
+      tags: [Integrations]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/notification_filters.yaml#/read'
+    delete:
+      description: Remove the filter from the notification
+      summary: Delete a notification filter
+      tags: [Integrations]
+      responses:
+        '204': { $ref: '../components/responses.yaml#/RecordRemoved' }
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }
+    patch:
+      description: Update a notification filter
+      summary: Update a notification filter
+      tags: [Integrations]
+      requestBody:
+        $ref: '../components/requests.yaml#/jsonPatch'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/notification_filters.yaml#/read'
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }

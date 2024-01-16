@@ -1,0 +1,39 @@
+read:
+  type: object
+  properties: &notificationFilterProps
+    name:
+      type: string
+    pattern:
+      type: string
+    operation:
+      type: string
+      enum:
+        - '=='
+        - '!='
+    value:
+      type: string
+      nullable: true
+    action:
+      type: string
+      enum:
+        - process
+        - ignore
+  required:
+    - name
+    - pattern
+    - operation
+    - value
+    - action
+  additionalProperties: true
+
+write:
+  type: object
+  properties:
+    <<: *notificationFilterProps
+  required:
+    - name
+    - pattern
+    - operation
+    - value
+    - action
+  additionalProperties: false
