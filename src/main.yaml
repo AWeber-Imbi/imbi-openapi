@@ -59,6 +59,10 @@ paths:
     { $ref: 'endpoints/notification_filters.yaml#/paths/collection' }
   /integrations/{integration_name}/notifications/{notification_name}/filters/{filter_name}:
     { $ref: 'endpoints/notification_filters.yaml#/paths/manage' }
+  /integrations/{integration_name}/notifications/{notification_name}/rules:
+    { $ref: 'endpoints/notification_rules.yaml#/paths/collection' }
+  /integrations/{integration_name}/notifications/{notification_name}/rules/{rule_name}:
+    { $ref: 'endpoints/notification_rules.yaml#/paths/manage' }
   /operations-log: { '$ref': 'endpoints/operations_log.yaml#/paths/collection' }
   /operations-log/{id}:
     { '$ref': 'endpoints/operations_log.yaml#/paths/manage' }

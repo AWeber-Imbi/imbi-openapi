@@ -1,0 +1,20 @@
+read:
+  type: object
+  properties: &notificationFilterProps
+    fact_type_id:
+      type: integer
+    pattern:
+      type: string
+  required:
+    - fact_type_id
+    - pattern
+  additionalProperties: true
+
+write:
+  type: object
+  properties:
+    <<: *notificationFilterProps
+  required:
+    - fact_type_id
+    - pattern
+  additionalProperties: false
