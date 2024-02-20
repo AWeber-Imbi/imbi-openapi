@@ -1,0 +1,87 @@
+paths:
+  collection:
+    parameters:
+      - name: integration_name
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      description: Retrieve the collection of notifications defined for an integration
+      summary: Get notifications
+      tags: [Integrations]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../schemas/integration_notification.yaml#/read'
+    post:
+      description: Add a new notification to an integration
+      summary: Add notification
+      tags: [Integrations]
+      requestBody:
+        description: Notification details
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/integration_notification.yaml#/write'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '../schemas/integration_notification.yaml#/write'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/integration_notification.yaml#/read'
+  manage:
+    parameters:
+      - name: integration_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: notification_name
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      description: Retrieve a specific notification by name
+      summary: Fetch a single notification
+      tags: [Integrations]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/integration_notification.yaml#/read'
+    delete:
+      description: Remove the specified notification
+      summary: Delete a notification
+      tags: [Integrations]
+      responses:
+        '204': { $ref: '../components/responses.yaml#/RecordRemoved' }
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }
+    patch:
+      description: Update a notification
+      summary: Update a notification
+      tags: [Integrations]
+      requestBody:
+        $ref: '../components/requests.yaml#/jsonPatch'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/integration_notification.yaml#/read'
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }
