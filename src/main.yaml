@@ -204,6 +204,8 @@ tags:
     description: Endpoints used for retrieving settings for the Imbi UI
   - name: Integrations
     description: Endpoints used to retrieve information about applications that Imbi is integrated with
+  - name: Notifications
+    description: Endpoints used for integrating Imbi with webhooks from other applications
   - name: Monitoring & Metrics
     description: |-
       Endpoints used for health checking, service status, and service metrics
@@ -223,13 +225,17 @@ x-tagGroups:
     tags:
       - Cookie Cutters
       - Environments
-      - Integrations
       - Namespaces
       - Fact Types
       - Fact Type Enums
       - Fact Type Ranges
       - Project Link Types
       - Project Types
+  - name: Integrations
+    tags:
+      - Integrations
+      - Notifications
+      - Automations
   - name: Operations Log
     tags:
       - Operations Log
@@ -252,7 +258,6 @@ x-tagGroups:
       - User
   - name: UI Specific
     tags:
-      - Automations
       - Dashboard
       - Settings
   - name: Other

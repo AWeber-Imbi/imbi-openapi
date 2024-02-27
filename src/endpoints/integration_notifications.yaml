@@ -9,7 +9,7 @@ paths:
     get:
       description: Retrieve the collection of notifications defined for an integration
       summary: Get notifications
-      tags: [Integrations]
+      tags: [Notifications]
       responses:
         '200':
           description: Success
@@ -22,7 +22,7 @@ paths:
     post:
       description: Add a new notification to an integration
       summary: Add notification
-      tags: [Integrations]
+      tags: [Notifications]
       requestBody:
         description: Notification details
         content:
@@ -54,7 +54,7 @@ paths:
     get:
       description: Retrieve a specific notification by name
       summary: Fetch a single notification
-      tags: [Integrations]
+      tags: [Notifications]
       responses:
         '200':
           description: Success
@@ -65,7 +65,7 @@ paths:
     delete:
       description: Remove the specified notification
       summary: Delete a notification
-      tags: [Integrations]
+      tags: [Notifications]
       responses:
         '204': { $ref: '../components/responses.yaml#/RecordRemoved' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
@@ -73,7 +73,7 @@ paths:
     patch:
       description: Update a notification
       summary: Update a notification
-      tags: [Integrations]
+      tags: [Notifications]
       requestBody:
         $ref: '../components/requests.yaml#/jsonPatch'
       responses:
