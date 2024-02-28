@@ -51,6 +51,10 @@ paths:
   /namespaces/{id}: { $ref: 'endpoints/namespace.yaml#/paths/manage' }
   /integrations: { $ref: 'endpoints/integrations.yaml#/paths/collection' }
   /integrations/{name}: { $ref: 'endpoints/integrations.yaml#/paths/manage' }
+  /integrations/{integration_name}/automations:
+    { $ref: 'endpoints/automations.yaml#/paths/collection'}
+  /integrations/{integration_name}/automations/{automation_name}:
+    { $ref: 'endpoints/automations.yaml#/paths/manage'}
   /integrations/{integration_name}/notifications:
     { $ref: 'endpoints/integration_notifications.yaml#/paths/collection' }
   /integrations/{integration_name}/notifications/{notification_name}:

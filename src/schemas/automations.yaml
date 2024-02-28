@@ -1,0 +1,116 @@
+read:
+  type: object
+  properties:
+    id:
+      description: "Surrogate ID for this automation"
+      type: integer
+    name:
+      description: "Human-readable name for this automation"
+      type: string
+    slug:
+      description: "Machine-readable slug"
+      type: string
+      pattern: "^[a-z0-9][-_a-z0-9]*[a-z0-9]$"
+      minLength: 2
+    integration_name:
+      description: "The name of the integration that implements this automation"
+      type: string
+    callable: &automationCallable
+      description: |
+        Identifies what to invoke for this automation.
+        
+        This identifies which python function to invoke inside of the running
+        Imbi instance. It uses the [common import string] syntax.
+        
+        [common import string]: https://docs.pydantic.dev/latest/api/types/#pydantic.types.ImportString
+      type: string
+    categories: &automationCategories
+      description: "Which actions is this automation valid for?"
+      type: array
+      items:
+        type: string
+        enum:
+          - create-project
+    applies_to:
+      description: "Project type slugs that this automation can be run for"
+      type: array
+      items:
+        type: string
+    depends_on:
+      description: "Slugs of other automations that are required for this automation to be run"
+      type: array
+      items:
+        type: string
+    created_at:
+      type: string
+      format: date-time
+    created_by:
+      type: string
+    last_modified_at:
+      type: string
+      format: date-time
+      nullable: true
+    last_modified_by:
+      type: string
+      nullable: true
+  example:
+    id: 1
+    name: "Create project"
+    slug: "github-create-project"
+    integration_name: "GitHub"
+    callable: "imbi.endpoints.integrations.automations.do_nothing"
+    categories:
+      - "create-project"
+    applies_to:
+      - "http-api"
+    depends_on: []
+    created_at: "2024-02-27T21:05:46+0000"
+    created_by: "me"
+    last_modified_at: null
+    last_modified_by: null
+
+write:
+  type: object
+  properties:
+    name:
+      description: "Human-readable name for this automation"
+      type: string
+    categories:
+      <<: *automationCategories
+    callable:
+      allOf:
+        - *automationCallable
+        - type: string
+          default: "imbi.endpoints.integrations.automations.do_nothing"
+    applies_to:
+      description: "List of project types that this automation is valid for"
+      type: array
+      items:
+        oneOf:
+          - type: string
+            title: slug
+            description: Identifies the project type using its slug
+          - type: integer
+            title: ID
+            description: Identifies the project type using its unique ID
+    depends_on:
+      description: "List of other automations that are required for this automation to run"
+      type: array
+      items:
+        oneOf:
+          - type: string
+            title: slug
+            description: Identifies the automation using its slug
+          - type: integer
+            title: ID
+            description: Identifies the automation using its surrogate ID
+  required:
+    - name
+    - categories
+    - applies_to
+  example:
+    name: "Create project"
+    categories:
+      - "create-project"
+    applies_to:
+      - "http-api"
