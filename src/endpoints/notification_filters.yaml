@@ -14,7 +14,7 @@ paths:
     get:
       description: Retrieve the collection of filters for a notification
       summary: Get notification filters
-      tags: [Integrations]
+      tags: [Notifications]
       responses:
         '200':
           description: Success
@@ -27,7 +27,7 @@ paths:
     post:
       description: Add a new filter to a notification
       summary: Add notification filter
-      tags: [Integrations]
+      tags: [Notifications]
       requestBody:
         description: Filter details
         content:
@@ -64,7 +64,7 @@ paths:
     get:
       description: Retrieve a specific filter from a notification by name
       summary: Fetch a notification filter
-      tags: [Integrations]
+      tags: [Notifications]
       responses:
         '200':
           description: Success
@@ -75,7 +75,7 @@ paths:
     delete:
       description: Remove the filter from the notification
       summary: Delete a notification filter
-      tags: [Integrations]
+      tags: [Notifications]
       responses:
         '204': { $ref: '../components/responses.yaml#/RecordRemoved' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
@@ -83,7 +83,7 @@ paths:
     patch:
       description: Update a notification filter
       summary: Update a notification filter
-      tags: [Integrations]
+      tags: [Notifications]
       requestBody:
         $ref: '../components/requests.yaml#/jsonPatch'
       responses:

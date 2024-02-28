@@ -128,6 +128,7 @@ paths:
     patch:
       description: Update a specific surrogate identifier for the project
       summary: Update identifier
+      tags: [Project Facts]
       requestBody:
         $ref: '../components/requests.yaml#/jsonPatch'
       responses:
@@ -141,6 +142,7 @@ paths:
     delete:
       description: Remove the surrogate identifier for the project in a specified integration
       summary: Remove identifier
+      tags: [Project Facts]
       responses:
         '204':
           description: Identifier removed

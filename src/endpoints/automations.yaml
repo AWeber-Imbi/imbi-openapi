@@ -103,3 +103,120 @@ sonarqube:
                     type: string
         '400':
           description: Request could not be processed
+
+paths:
+  collection:
+    parameters:
+      - name: integration_name
+        in: path
+        description: Connected application that each automation is related to
+        required: true
+        schema:
+          type: string
+    get:
+      description: Retrieve automations implemented by `integration_name`
+      summary: Get Automations
+      tags: [Automations]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "../schemas/automations.yaml#/read"
+            application/msgpack:
+              schema:
+                type: array
+                items:
+                  $ref: "../schemas/automations.yaml#/read"
+    post:
+      description: Add an automation
+      summary: Add Automation
+      tags: [Automations]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/automations.yaml#/write"
+          application/msgpack:
+            schema:
+              $ref: "../schemas/automations.yaml#/write"
+      responses:
+        '200':
+          description: Newly created automation
+          content:
+            application/json:
+              schema:
+                $ref: "../schemas/automations.yaml#/read"
+            application/msgpack:
+              schema:
+                $ref: "../schemas/automations.yaml#/read"
+        '400': { $ref: "../components/responses.yaml#/RequestError" }
+        '401': { $ref: "../components/responses.yaml#/Unauthorized" }
+        '409': { $ref: "../components/responses.yaml#/Conflict" }
+  manage:
+    parameters:
+      - name: integration_name
+        in: path
+        description: Application that implements this automation
+        required: true
+        schema:
+          type: string
+      - name: automation_name
+        in: path
+        description: Assigned slug or name of the automation
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get Automation
+      description: |
+        Retrieve an automation by its slug, name, or surrogate ID
+      tags: [Automations]
+      responses:
+        '200':
+          description: Record details
+          content:
+            application/json:
+              schema:
+                $ref: "../schemas/automations.yaml#/read"
+            application/msgpack:
+              schema:
+                $ref: "../schemas/automations.yaml#/read"
+        '400': { $ref: "../components/responses.yaml#/RequestError" }
+        '401': { $ref: "../components/responses.yaml#/Unauthorized" }
+        '404': { $ref: "../components/responses.yaml#/NotFound" }
+    delete:
+      summary: Delete Automation
+      description: |
+        Delete an automation by its slug, name, or surrogate ID
+      tags: [Automations]
+      responses:
+        '204': { $ref: "../components/responses.yaml#/RecordRemoved" }
+        '400': { $ref: "../components/responses.yaml#/RequestError" }
+        '401': { $ref: "../components/responses.yaml#/Unauthorized" }
+        '404': { $ref: "../components/responses.yaml#/NotFound" }
+    patch:
+      summary: Update Automation
+      description: |
+        Update an automation by its slug, name, or surrogate ID
+      tags: [Automations]
+      requestBody:
+        $ref: "../components/requests.yaml#/jsonPatch"
+      responses:
+        '200':
+          description: Updated Record
+          content:
+            application/json:
+              schema:
+                $ref: "../schemas/automations.yaml#/read"
+            application/msgpack:
+              schema:
+                $ref: "../schemas/automations.yaml#/read"
+        '304': { $ref: "../components/responses.yaml#/NoChanges" }
+        '400': { $ref: "../components/responses.yaml#/RequestError" }
+        '401': { $ref: "../components/responses.yaml#/Unauthorized" }
+        '404': { $ref: "../components/responses.yaml#/NotFound" }
+        '409': { $ref: "../components/responses.yaml#/Conflict" }
