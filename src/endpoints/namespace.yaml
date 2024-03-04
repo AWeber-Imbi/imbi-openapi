@@ -24,6 +24,7 @@ paths:
                       slug: PSE
                       icon_class: fas fa-blind
                       sentry_team_slug: pse
+                      aws_ssm_slug: pse
                       maintained_by:
                         - Developers
                         - Operations
@@ -113,6 +114,7 @@ components:
           - Developers
           - Operations
         sentry_team_slug: pse
+        aws_ssm_slug: pse
     write:
       summary: A full namespace record
       value:
@@ -120,6 +122,7 @@ components:
         slug: PSE
         icon_class: fas fa-blind
         sentry_team_slug: pse
+        aws_ssm_slug: pse
         maintained_by:
           - Developers
           - Operations
