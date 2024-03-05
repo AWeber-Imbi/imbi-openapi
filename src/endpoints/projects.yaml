@@ -101,6 +101,7 @@ paths:
                           - Staging
                           - Production
                         archived: false
+                        configuration_type: ssm
                     rows: 1
             application/msgpack:
               <<: *responseContent
@@ -212,6 +213,7 @@ components:
           - Staging
           - Production
         archived: false
+        configuration_type: ssm
     write:
       summary: An example of the payload for creating a record
       value:
