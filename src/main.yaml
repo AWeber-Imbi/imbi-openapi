@@ -93,6 +93,8 @@ paths:
   /project-types/{id}: { $ref: 'endpoints/project_type.yaml#/paths/manage' }
   /projects: { '$ref': 'endpoints/projects.yaml#/paths/collection' }
   /projects/{id}: { '$ref': 'endpoints/projects.yaml#/paths/manage' }
+  /projects/{id}/configuration/ssm:
+    { '$ref': 'endpoints/project_configuration_ssm.yaml#/paths/collection' }
   /projects/{id}/facts:
     { '$ref': 'endpoints/project_facts.yaml#/paths/collection' }
   /projects/{id}/fact-types:
@@ -184,6 +186,8 @@ tags:
     description: Endpoints used for the management of projects
   - name: Project Activity Feed
     description: Endpoints that detail activity on a project
+  - name: Project Configuration
+    description: Endpoints to manage project configuration
   - name: Project Dependencies
     description: Endpoints used to manage the relationships of projects to other projects
   - name: Project Facts
@@ -246,6 +250,7 @@ x-tagGroups:
   - name: Project Management
     tags:
       - Projects
+      - Project Configuration
       - Project Dependencies
       - Project Facts
       - Project Fact Types
