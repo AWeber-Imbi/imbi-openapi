@@ -5,10 +5,15 @@ read:
       type: string
     api_endpoint:
       type: string
+    api_secret:
+      description: Obscured API secret or `null`
+      type: string
+      nullable: true
   required:
     [
       name,
       api_endpoint,
+      api_secret,
     ]
   additionalProperties: false
 
