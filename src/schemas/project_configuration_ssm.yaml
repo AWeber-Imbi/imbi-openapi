@@ -9,13 +9,6 @@ read:
       name:
         description: The SSM parameter path
         type: string
-      type:
-        description: The SSM parameter type
-        type: string
-        enum:
-          - String
-          - SecureString
-          - StringList
       values:
         description: The parameter values in each environment
         type: array
@@ -29,12 +22,19 @@ read:
             value:
               description: The parameter value
               type: string
+            type:
+              description: The SSM parameter type
+              type: string
+              enum:
+                - String
+                - SecureString
+                - StringList
           additionalProperties: false
           required:
             - environment
             - value
+            - type
     additionalProperties: false
     required:
       - name
-      - type
       - values

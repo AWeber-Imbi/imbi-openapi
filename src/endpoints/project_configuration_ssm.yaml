@@ -22,19 +22,21 @@ paths:
                 records:
                   value:
                     - name: "/foo/bar/baz"
-                      type: String
                       values:
                         - environment: Testing
                           value: "42"
+                          type: String
                         - environment: Production
                           value: "9001"
+                          type: String
                     - name: "biz/bap/boop"
-                      type: SecureString
                       values:
                         - environment: Testing
                           value: "password"
+                          type: SecureString
                         - environment: Production
                           value: "password123$"
+                          type: SecureString
             application/msgpack:
               <<: *collectionResponse
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
