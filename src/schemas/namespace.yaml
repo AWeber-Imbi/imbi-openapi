@@ -39,6 +39,10 @@ read:
       description: Optional ID of associated PagerDuty escalation policy
       type: string
       nullable: true
+    aws_ssm_slug:
+      description: Optional slug of the namespace in the AWS SSM path
+      type: string
+      nullable: true
   required:
     - name
     - slug
@@ -75,6 +79,10 @@ write:
       nullable: true
     pagerduty_policy:
       description: Optional ID of associated PagerDuty escalation policy
+      type: string
+      nullable: true
+    aws_ssm_slug:
+      description: Optional slug of the namespace in the AWS SSM path
       type: string
       nullable: true
   required:

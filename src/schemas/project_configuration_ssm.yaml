@@ -1,0 +1,40 @@
+read:
+  title: Project SSM Configuration
+  description: SSM parameters for the project
+  type: array
+  items:
+    description: The SSM parameter
+    type: object
+    properties:
+      name:
+        description: The SSM parameter path
+        type: string
+      values:
+        description: The parameter values in each environment
+        type: array
+        items:
+          description: The parameter value in this environment
+          type: object
+          properties:
+            environment:
+              description: The environment the parameter exists in
+              type: string
+            value:
+              description: The parameter value
+              type: string
+            type:
+              description: The SSM parameter type
+              type: string
+              enum:
+                - String
+                - SecureString
+                - StringList
+          additionalProperties: false
+          required:
+            - environment
+            - value
+            - type
+    additionalProperties: false
+    required:
+      - name
+      - values

@@ -60,6 +60,10 @@ read:
       description: Optional ID for the project in PagerDuty
       type: string
       nullable: true
+    configuration_type:
+      description: Optional configuration system for the project
+      type: string
+      nullable: true
   additionalProperties: false
 
 write:
