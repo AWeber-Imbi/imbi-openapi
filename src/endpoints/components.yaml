@@ -1,0 +1,112 @@
+paths:
+  collection:
+    post:
+      summary: Create Component
+      description: Create a new component
+      tags: [Components]
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: '../schemas/component.yaml#/write' }
+          application/msgpack:
+            schema: { $ref: '../schemas/component.yaml#/write' }
+      responses:
+        '200':
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: '../schemas/component.yaml#/read' }
+            application/msgpack:
+              schema: { $ref: '../schemas/component.yaml#/read' }
+        '400': { $ref: '../components/responses.yaml#/RequestError' }
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '403': { $ref: '../components/responses.yaml#/Forbidden' }
+        '409': { $ref: '../components/responses.yaml#/Conflict' }
+    get:
+      summary: Retrieve Components
+      description: Retrieve the list of know components
+      tags: [Components]
+      responses:
+        '200':
+          description: Page of components
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '../schemas/component.yaml#/read' }
+            application/msgpack:
+              schema:
+                type: array
+                items: { $ref: '../schemas/component.yaml#/read' }
+          headers:
+            Link:
+              $ref: '../components/headers.yaml#/Link'
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }
+      parameters:
+        - name: limit
+          in: query
+          description: Optional page size
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+        - name: token
+          in: query
+          description: |
+            Pagination token
+
+            This is returned in the `"next"` link
+          required: false
+          schema:
+            type: string
+  manage:
+    parameters:
+      - name: package_url
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get Component
+      description: Retrieve a specific component by name
+      tags: [Components]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema: { $ref: '../schemas/component.yaml#/read' }
+            application/msgpack:
+              schema: { $ref: '../schemas/component.yaml#/read' }
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }
+    delete:
+      summary: Remove Component
+      description: Remove a specific component by name
+      tags: [Components]
+      responses:
+        '204':
+          description: Item deleted
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '403': { $ref: '../components/responses.yaml#/Forbidden' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }
+        '409': { $ref: '../components/responses.yaml#/Conflict' }
+    patch:
+      summary: Update Component
+      description: |
+        Update a Component with a JSON patch document
+      tags: [Components]
+      requestBody:
+        $ref: "../components/requests.yaml#/jsonPatch"
+      responses:
+        '200':
+          description: Component was updated
+          content:
+            application/json:
+              schema: { $ref: '../schemas/component.yaml#/read' }
+            application/msgpack:
+              schema: { $ref: '../schemas/component.yaml#/read' }
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '403': { $ref: '../components/responses.yaml#/Forbidden' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }

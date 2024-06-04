@@ -15,6 +15,23 @@ Conflict:
     application/msgpack:
       <<: *responsesConflict
 
+Forbidden:
+  description: The requested operation cannot be performed by the user
+  content:
+    application/json: &responsesForbidden
+      schema:
+        $ref: './schemas.yaml#/problemDetail'
+      examples:
+        problemDetail:
+          summary: '403'
+          value:
+            status: 403
+            type: 'https://imbi.localhost/#forbidden'
+            title: 'Forbidden'
+            detail: 'fredf(internal) does not have the "admin" permission'
+    application/msgpack:
+      <<: *responsesForbidden
+
 NoChanges:
   description: No changes were found in the requested update
 
