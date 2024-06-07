@@ -37,6 +37,8 @@ paths:
     { $ref: 'endpoints/authentication_tokens.yaml#/paths/collection' }
   /authentication-tokens/{token}:
     { $ref: 'endpoints/authentication_tokens.yaml#/paths/manage' }
+  /components: { $ref: 'endpoints/components.yaml#/paths/collection' }
+  /components/{package_url}: { $ref: 'endpoints/components.yaml#/paths/manage' }
   /cookie-cutters: { $ref: 'endpoints/cookie_cutter.yaml#/paths/collection' }
   /cookie-cutters/{name}: { $ref: 'endpoints/cookie_cutter.yaml#/paths/manage' }
   /environments: { $ref: 'endpoints/environment.yaml#/paths/collection' }
@@ -93,6 +95,8 @@ paths:
   /project-types/{id}: { $ref: 'endpoints/project_type.yaml#/paths/manage' }
   /projects: { '$ref': 'endpoints/projects.yaml#/paths/collection' }
   /projects/{id}: { '$ref': 'endpoints/projects.yaml#/paths/manage' }
+  /projects/{id}/components:
+    { '$ref': 'endpoints/project_components.yaml#/paths/collection' }
   /projects/{id}/configuration/ssm:
     { '$ref': 'endpoints/project_configuration_ssm.yaml#/paths/collection' }
   /projects/{id}/facts:
@@ -144,6 +148,8 @@ tags:
     description: Endpoints that detail changes to projects and other entities in Imbi
   - name: Automations
     description: Endpoints related to project automations
+  - name: Components
+    description: Endpoints for managing components and their usage in projects
   - name: Cookie Cutters
     description: Endpoints used for the management of project creation cookie cutters
   - name: Environments
@@ -249,6 +255,7 @@ x-tagGroups:
       - Operations Log
   - name: Project Management
     tags:
+      - Components
       - Projects
       - Project Configuration
       - Project Dependencies

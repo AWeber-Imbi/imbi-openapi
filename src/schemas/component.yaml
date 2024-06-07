@@ -1,0 +1,86 @@
+write:
+  type: object
+  properties: &baseComponentProps
+    package_url:
+      description: Unique identifies the component
+      type: string
+      pattern: "^pkg:"
+    name:
+      description: Human-readable name of this component
+      type: string
+    status:
+      description: Status for *all* versions of this component
+      type: string
+      enum:
+        - Active
+        - Deprecated
+        - Forbidden
+      default: Active
+    icon_class:
+      description: Optional Font Awesome icon class
+      type: string
+      nullable: true
+      default: "fas fa-save"
+    active_version:
+      description: |
+        Active version for this component for scoring purposes
+
+        This is `null` if the version of this component does not affect
+        the total project score. If it starts with a `^` or `~` then it
+        is a semantic version range; otherwise, it is an exact match.
+      type: string
+      nullable: true
+      default: "null"
+    home_page:
+      description: Optional homepage
+      type: string
+      format: uri
+      nullable: true
+  required:
+    - home_page
+    - name
+    - package_url
+  example:
+    package_url: "pkg:pypi:imbi"
+    name: "Imbi"
+    icon_class: "imbi imbi"
+    home_page: "https://github.com/AWeber-Imbi/imbi"
+
+read:
+  type: object
+  properties:
+    <<: *baseComponentProps
+    created_at:
+      type: string
+      format: date-time
+    created_by:
+      type: string
+    last_modified_at:
+      type: string
+      format: date-time
+      nullable: true
+    last_modified_by:
+      type: string
+      nullable: true
+  required:
+    - active_version
+    - created_at
+    - created_by
+    - home_page
+    - icon_class
+    - last_modified_at
+    - last_modified_by
+    - name
+    - package_url
+    - status
+  example:
+    package_url: "pkg:pypi:imbi"
+    name: "Imbi"
+    status: "Active"
+    icon_class: "imbi imbi"
+    active_version: null
+    home_page: "https://github.com/AWeber-Imbi/imbi"
+    created_at: "2020-11-23T13:42:00-04:00"
+    created_by: "gavinr"
+    last_modified_at: "2024-05-16T09:45:00-05:00"
+    last_modified_by: "dave-shawley"
