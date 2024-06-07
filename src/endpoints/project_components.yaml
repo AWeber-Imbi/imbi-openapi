@@ -14,7 +14,7 @@ paths:
         '200':
           description: Success
           content:
-            application/json:
+            application/json: &projectComponentsRsp
               schema:
                 title: Project components
                 description: List of components that this project uses
@@ -71,6 +71,8 @@ paths:
                     status: "Active"
                     icon_class: "imbi imbi"
                     score: 100
+            application/msgpack:
+              <<: *projectComponentsRsp
           headers:
             Link:
               $ref: '../components/headers.yaml#/Link'
