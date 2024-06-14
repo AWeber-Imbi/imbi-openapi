@@ -84,3 +84,27 @@ read:
     created_by: "gavinr"
     last_modified_at: "2024-05-16T09:45:00-05:00"
     last_modified_by: "dave-shawley"
+
+read-collection:
+  allOf:
+    - $ref: "#/read"
+    - type: object
+      properties:
+        link:
+          type: string
+          format: uri
+          description: Canonical link to this component
+        project_count:
+          type: number
+          description: Number of projects using this component
+        version_count:
+          type: number
+          description: Number of component versions discovered
+      required:
+        - link
+        - project_count
+        - version_count
+      example:
+        link: "/components/pkg%3Apypi%3Aimbi"
+        project_count: 1
+        version_count: 13
