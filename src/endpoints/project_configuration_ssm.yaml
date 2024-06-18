@@ -41,3 +41,28 @@ paths:
               <<: *collectionResponse
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
         '404': { $ref: '../components/responses.yaml#/NotFound' }
+    post:
+      description: Create a set of new SSM parameters for a name
+      summary: Create SSM params
+      tags: [Project Configuration]
+      requestBody:
+        description: Parameters to create
+        content:
+          application/json: &postResponse
+            schema:
+              $ref: '../schemas/project_configuration_ssm.yaml#/write'
+            example:
+              namespace_id: 5
+              name: "/foo/bar/baz"
+              type: String
+              values:
+                - environment: Testing
+                  value: "42"
+                - environment: Production
+                  value: "9001"
+          application/msgpack:
+             <<: *postResponse
+      responses:
+        '204':
+          description: The request to add SSM parameters was successful
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
