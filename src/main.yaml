@@ -133,6 +133,8 @@ paths:
     { '$ref': 'endpoints/project_urls.yaml#/paths/manage' }
   /projects/build-search-index:
     { '$ref': 'endpoints/projects.yaml#/paths/search' }
+  /reports/component-usage:
+    { $ref: 'endpoints/component_usage_report.yaml#/paths/collection' }
   /reports/namespace-shs-history:
     { $ref: 'endpoints/namespace_shs_history.yaml#/paths/collection' }
   /reports/system-shs-history:
