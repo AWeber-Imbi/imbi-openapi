@@ -22,7 +22,7 @@ read:
             value:
               description: The parameter value
               type: string
-            type:
+            type: &type
               description: The SSM parameter type
               type: string
               enum:
@@ -38,3 +38,24 @@ read:
     required:
       - name
       - values
+
+write:
+  title: Project SSM Configuration
+  description: SSM parameters for a given name
+  type: object
+  properties:
+    name:
+      description: The SSM parameter path after the project prefix
+      type: string
+    type:
+      <<: *type
+    values:
+      description: The parameter values in each environment
+      type: object
+      additionalProperties:
+        type: string
+  additionalProperties: false
+  required:
+    - name
+    - type
+    - values
