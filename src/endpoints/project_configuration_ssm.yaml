@@ -52,14 +52,11 @@ paths:
             schema:
               $ref: '../schemas/project_configuration_ssm.yaml#/write'
             example:
-              namespace_id: 5
-              name: "/foo/bar/baz"
+              name: "foo/bar/baz"
               type: String
               values:
-                - environment: Testing
-                  value: "42"
-                - environment: Production
-                  value: "9001"
+                Testing: "42"
+                Production: "9001"
           application/msgpack:
              <<: *postResponse
       responses:

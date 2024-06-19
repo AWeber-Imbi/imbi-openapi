@@ -6,7 +6,7 @@ read:
     description: The SSM parameter
     type: object
     properties:
-      name: &name
+      name:
         description: The SSM parameter path
         type: string
       values:
@@ -16,10 +16,10 @@ read:
           description: The parameter value in this environment
           type: object
           properties:
-            environment: &environment
+            environment:
               description: The environment the parameter exists in
               type: string
-            value: &value
+            value:
               description: The parameter value
               type: string
             type: &type
@@ -44,30 +44,18 @@ write:
   description: SSM parameters for a given name
   type: object
   properties:
-    namespace_id:
-      description: The namespace in which to perform add this parameter
-      type: integer
     name:
-      <<: *name
+      description: The SSM parameter path after the project prefix
+      type: string
     type:
       <<: *type
     values:
       description: The parameter values in each environment
-      type: array
-      items:
-        description: The parameter value in this environment
-        type: object
-        properties:
-          environment:
-            <<: *environment
-          value:
-            <<: *value
-        additionalProperties: false
-        required:
-          - environment
-          - value
+      type: object
+      additionalProperties:
+        type: string
   additionalProperties: false
   required:
     - name
-    - values
     - type
+    - values
