@@ -48,7 +48,7 @@ paths:
       requestBody:
         description: Parameters to create
         content:
-          application/json: &postResponse
+          application/json: &postBody
             schema:
               $ref: '../schemas/project_configuration_ssm.yaml#/write'
             example:
@@ -58,8 +58,29 @@ paths:
                 Testing: "42"
                 Production: "9001"
           application/msgpack:
-             <<: *postResponse
+             <<: *postBody
       responses:
         '204':
           description: The request to add SSM parameters was successful
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+    delete:
+      summary: Delete a set of SSM parameters
+      description: Delete SSM params
+      tags: [ Project Configuration ]
+      requestBody:
+        description: Parameters to delete
+        content:
+          application/json: &deleteBody
+            schema:
+              $ref: '../schemas/project_configuration_ssm.yaml#/delete'
+            example:
+              name: "foo/bar/baz"
+              environments:
+                - Testing
+                - Production
+          application/msgpack:
+            <<: *deleteBody
+      responses:
+        '204': { $ref: '../components/responses.yaml#/RecordRemoved' }
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }

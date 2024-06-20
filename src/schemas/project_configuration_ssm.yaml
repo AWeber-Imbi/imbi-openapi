@@ -59,3 +59,21 @@ write:
     - name
     - type
     - values
+
+delete:
+  title: Project SSM Configuration
+  description: SSM parameters for a given name
+  type: object
+  properties:
+    name:
+      description: The SSM parameter path after the project prefix
+      type: string
+    environments:
+      type: array
+      items:
+        description: Environments to delete this parameter in
+        type: string
+  additionalProperties: false
+  required:
+    - name
+    - environments
