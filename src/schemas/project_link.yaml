@@ -24,7 +24,6 @@ read:
     url:
       description: The link URL
       type: string
-      format: uri
   additionalProperties: false
 
 write:
@@ -41,7 +40,6 @@ write:
     url:
       description: The link URL
       type: string
-      format: uri
   required:
     - project_id
     - link_type_id
