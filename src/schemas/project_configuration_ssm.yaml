@@ -11,14 +11,10 @@ read:
         type: string
       values:
         description: The parameter values in each environment
-        type: array
-        items:
-          description: The parameter value in this environment
+        type: object
+        additionalProperties:
           type: object
           properties:
-            environment:
-              description: The environment the parameter exists in
-              type: string
             value:
               description: The parameter value
               type: string
@@ -31,11 +27,14 @@ read:
                 - StringList
           additionalProperties: false
           required:
-            - environment
             - value
             - type
+      self:
+        description: URL referring to this parameter for this project, with SSM name URL-encoded
+        type: string
     additionalProperties: false
     required:
+      - self
       - name
       - values
 

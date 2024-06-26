@@ -21,22 +21,24 @@ paths:
               examples:
                 records:
                   value:
-                    - name: "/foo/bar/baz"
+                    - name: "foo/bar/baz"
                       values:
-                        - environment: Testing
+                        Testing:
                           value: "42"
                           type: String
-                        - environment: Production
+                        Production:
                           value: "9001"
                           type: String
+                      self: "https://imbi.com/project/3/configuration/ssm/foo%2Fbar%2Fbaz"
                     - name: "biz/bap/boop"
                       values:
-                        - environment: Testing
+                        Testing:
                           value: "password"
                           type: SecureString
-                        - environment: Production
+                        Production:
                           value: "password123$"
                           type: SecureString
+                      self: "https://imbi.com/project/3/configuration/ssm/biz%2Fbap%2Fboop"
             application/msgpack:
               <<: *collectionResponse
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
