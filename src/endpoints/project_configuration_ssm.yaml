@@ -89,3 +89,29 @@ paths:
         '204': { $ref: '../components/responses.yaml#/RecordRemoved' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
         '404': { $ref: '../components/responses.yaml#/NotFound' }
+  record:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the project to get parameters for
+        required: true
+        schema:
+          type: number
+      - name: name
+        in: path
+        description: The URL-encoded SSM name of the parameter
+        required: true
+        schema:
+          type: string
+    patch:
+      description: Update an SSM parameter with a specific name
+      summary: Update SSM param
+      tags: [ Project Configuration ]
+      requestBody:
+        $ref: '../components/requests.yaml#/jsonPatch'
+      responses:
+        '200':
+          description: Success
+        '400': { $ref: '../components/responses.yaml#/RequestError' }
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }
