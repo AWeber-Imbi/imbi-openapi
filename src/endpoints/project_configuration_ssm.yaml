@@ -55,10 +55,13 @@ paths:
               $ref: '../schemas/project_configuration_ssm.yaml#/write'
             example:
               name: "foo/bar/baz"
-              type: String
               values:
-                Testing: "42"
-                Production: "9001"
+                Testing:
+                  value: "42"
+                  type: String
+                Production:
+                  value: "9001"
+                  type: String
           application/msgpack:
              <<: *postBody
       responses:

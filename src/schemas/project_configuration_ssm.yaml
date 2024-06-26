@@ -1,3 +1,24 @@
+param: &param
+  description: The parameter values in each environment
+  type: object
+  additionalProperties:
+    type: object
+    properties:
+      value:
+        description: The parameter value
+        type: string
+      type:
+        description: The SSM parameter type
+        type: string
+        enum:
+          - String
+          - SecureString
+          - StringList
+    additionalProperties: false
+    required:
+      - value
+      - type
+
 read:
   title: Project SSM Configuration
   description: SSM parameters for the project
@@ -10,25 +31,7 @@ read:
         description: The SSM parameter path
         type: string
       values:
-        description: The parameter values in each environment
-        type: object
-        additionalProperties:
-          type: object
-          properties:
-            value:
-              description: The parameter value
-              type: string
-            type: &type
-              description: The SSM parameter type
-              type: string
-              enum:
-                - String
-                - SecureString
-                - StringList
-          additionalProperties: false
-          required:
-            - value
-            - type
+        <<: *param
       self:
         description: URL referring to this parameter for this project, with SSM name URL-encoded
         type: string
@@ -46,17 +49,11 @@ write:
     name:
       description: The SSM parameter path after the project prefix
       type: string
-    type:
-      <<: *type
     values:
-      description: The parameter values in each environment
-      type: object
-      additionalProperties:
-        type: string
+      <<: *param
   additionalProperties: false
   required:
     - name
-    - type
     - values
 
 delete:
