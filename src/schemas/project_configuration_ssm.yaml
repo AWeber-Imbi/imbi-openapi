@@ -1,3 +1,24 @@
+param: &param
+  description: The parameter values in each environment
+  type: object
+  additionalProperties:
+    type: object
+    properties:
+      value:
+        description: The parameter value
+        type: string
+      type:
+        description: The SSM parameter type
+        type: string
+        enum:
+          - String
+          - SecureString
+          - StringList
+    additionalProperties: false
+    required:
+      - value
+      - type
+
 read:
   title: Project SSM Configuration
   description: SSM parameters for the project
@@ -10,32 +31,13 @@ read:
         description: The SSM parameter path
         type: string
       values:
-        description: The parameter values in each environment
-        type: array
-        items:
-          description: The parameter value in this environment
-          type: object
-          properties:
-            environment:
-              description: The environment the parameter exists in
-              type: string
-            value:
-              description: The parameter value
-              type: string
-            type: &type
-              description: The SSM parameter type
-              type: string
-              enum:
-                - String
-                - SecureString
-                - StringList
-          additionalProperties: false
-          required:
-            - environment
-            - value
-            - type
+        <<: *param
+      self:
+        description: URL referring to this parameter for this project, with SSM name URL-encoded
+        type: string
     additionalProperties: false
     required:
+      - self
       - name
       - values
 
@@ -47,17 +49,11 @@ write:
     name:
       description: The SSM parameter path after the project prefix
       type: string
-    type:
-      <<: *type
     values:
-      description: The parameter values in each environment
-      type: object
-      additionalProperties:
-        type: string
+      <<: *param
   additionalProperties: false
   required:
     - name
-    - type
     - values
 
 delete:
