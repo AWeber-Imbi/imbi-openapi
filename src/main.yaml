@@ -99,6 +99,8 @@ paths:
     { '$ref': 'endpoints/project_components.yaml#/paths/collection' }
   /projects/{id}/configuration/ssm:
     { '$ref': 'endpoints/project_configuration_ssm.yaml#/paths/collection' }
+  /projects/{id}/configuration/ssm/{name}:
+    { '$ref': 'endpoints/project_configuration_ssm.yaml#/paths/record' }
   /projects/{id}/facts:
     { '$ref': 'endpoints/project_facts.yaml#/paths/collection' }
   /projects/{id}/fact-types:
