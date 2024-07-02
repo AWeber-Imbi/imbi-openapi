@@ -32,6 +32,36 @@ Forbidden:
     application/msgpack:
       <<: *responsesForbidden
 
+InvalidRequestBody:
+  description: The request body did not validate
+  content:
+    application/json: &responseInvalidRequestBody
+      schema:
+        allOf:
+          - $ref: './schemas.yaml#/problemDetail'
+          - type: object
+            properties:
+              validation_errors:
+                description: |
+                  List of validation errors from pydantic.
+                  See https://docs.pydantic.dev/latest/errors/validation_errors/
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    loc:
+                      type: array
+                      items:
+                        - string
+                    msg:
+                      type: string
+      example:
+        $ref: './examples.yaml#/invalidRequestBodyError'
+    application/msgpack:
+      <<: *responseInvalidRequestBody
+
 NoChanges:
   description: No changes were found in the requested update
 
@@ -108,3 +138,14 @@ Unauthorized:
             message: 'HTTP 401 Unauthorized'
     application/msgpack:
       <<: *responsesRequestError
+
+UnprocessableEntity:
+  description: The request body is syntactically valid but semantically invalid
+  content:
+    application/json: &responseUnprocessable
+      schema:
+        $ref: './schemas.yaml#/problemDetail'
+      example:
+        $ref: './examples.yaml#/unprocessableBodyError'
+    application/msgpack:
+      <<: *responseUnprocessable

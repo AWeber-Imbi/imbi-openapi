@@ -5,3 +5,21 @@ jsonPatch:
     - op: replace
       path: icon_class
       value: fas fa-microscope
+invalidRequestBodyError:
+  description: Invalid request body
+  value:
+    type: 'https://imbi.example.com/#invalid-request-body'
+    title: 'Unprocessable Entity'
+    status: 422
+    detail: 'Failed to validate request body: 1 validation error for SBOM'
+    validation_errors:
+      - type: missing
+        loc: [bomFormat]
+        msg: "Field required"
+unprocessableBodyError:
+  description: Unprocessable request
+  value:
+    type: 'https://imbi.example.com/#unprocessable-entity'
+    title: 'Unprocessable Entity'
+    status: 422
+    detail: 'Internal reference is invalid'
