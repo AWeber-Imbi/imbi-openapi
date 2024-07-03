@@ -1,0 +1,120 @@
+paths:
+  collection:
+    get:
+      description: Retrieve all AWS roles
+      summary: Get Collection
+      tags: [AWS]
+      responses:
+        '200':
+          description: Success
+          headers:
+            Cache-Control: { $ref: '../components/headers.yaml#/Cache-Control' }
+          content:
+            application/json: &responseContent
+              schema:
+                type: array
+                items:
+                  $ref: '../schemas/aws_role.yaml#/read'
+              examples:
+                records:
+                  summary: All AWS roles
+                  value:
+                    - id: 1
+                      role_arn: arn:aws:iam::1234567890:role/imbi
+                      environment: Production
+                      namespace_id: 4
+                      created_at: 1964-01-01T11:11:11-08:00
+                      created_by: test_user
+                    - id: 2
+                      role_arn: arn:aws:iam::987654321:role/imbi
+                      environment: Staging
+                      namespace_id: 3
+                      created_at: 1964-01-01T11:11:11-08:00
+                      created_by: test_user
+            application/msgpack:
+              <<: *responseContent
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+    post:
+      summary: Create AWS role
+      description: Create a new AWS role
+      tags: [ AWS ]
+      requestBody:
+        description: The AWS role to create
+        content:
+          application/json: &postContent
+            schema:
+              $ref: '../schemas/aws_role.yaml#/write'
+            examples:
+              record:
+                $ref: '#/components/examples/record'
+          application/msgpack:
+            <<: *postContent
+      responses:
+        '200': { $ref: '#/components/responses/Success' }
+        '400': { $ref: '../components/responses.yaml#/RequestError' }
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '409': { $ref: '../components/responses.yaml#/Conflict' }
+  manage:
+    get:
+      summary: Get an AWS role
+      description: Retrieve an AWS role for a specific namespace and environment
+      tags: [ AWS ]
+      responses:
+        '200': { $ref: '#/components/responses/Success' }
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }
+    patch:
+      summary: Update Record
+      description: >-
+        Update an AWS role, providing a JSON Patch (RFC-6209) payload of update
+        operations to apply.
+      tags: [ AWS ]
+      requestBody:
+        $ref: '../components/requests.yaml#/jsonPatch'
+      responses:
+        '200': { $ref: '#/components/responses/Success' }
+        '304': { $ref: '../components/responses.yaml#/NoChanges' }
+        '400': { $ref: '../components/responses.yaml#/RequestError' }
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }
+        '409': { $ref: '../components/responses.yaml#/Conflict' }
+    delete:
+      summary: Delete Record
+      description: Remove an AWS role
+      tags: [ AWS ]
+      responses:
+        '204': { $ref: '../components/responses.yaml#/RecordRemoved' }
+        '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '404': { $ref: '../components/responses.yaml#/NotFound' }
+    parameters:
+      - name: id
+        in: path
+        description: Surrogate ID for AWS role
+        required: true
+        schema:
+          type: number
+
+components:
+  examples:
+    record:
+      summary: A role for a specific environment and namespace
+      value:
+        role_arn: arn:aws:iam::1234567890:role/imbi
+        environment: Production
+        namespace_id: 4
+  responses:
+    Success:
+      description: The request to create, update, or retrieve the environment was successful
+      headers:
+        Cache-Control: { $ref: '../components/headers.yaml#/Cache-Control' }
+        Last-Modified: { $ref: '../components/headers.yaml#/Last-Modified' }
+        Link: { $ref: '../components/headers.yaml#/Link' }
+      content:
+        application/json: &responsesSuccess
+          schema:
+            $ref: '../schemas/environment.yaml'
+          examples:
+            record:
+              $ref: '#/components/examples/record'
+        application/msgpack:
+          <<: *responsesSuccess
