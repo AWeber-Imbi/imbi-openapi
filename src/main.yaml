@@ -37,6 +37,8 @@ paths:
     { $ref: 'endpoints/authentication_tokens.yaml#/paths/collection' }
   /authentication-tokens/{token}:
     { $ref: 'endpoints/authentication_tokens.yaml#/paths/manage' }
+  /aws-roles: { $ref: 'endpoints/aws_role.yaml#/paths/collection' }
+  /aws-roles/{id}: { $ref: 'endpoints/aws_role.yaml#/paths/manage' }
   /components: { $ref: 'endpoints/components.yaml#/paths/collection' }
   /components/{package_url}: { $ref: 'endpoints/components.yaml#/paths/manage' }
   /cookie-cutters: { $ref: 'endpoints/cookie_cutter.yaml#/paths/collection' }

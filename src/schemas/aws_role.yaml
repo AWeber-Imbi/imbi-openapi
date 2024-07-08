@@ -1,0 +1,51 @@
+read:
+  title: AWS Role
+  description: |
+    An AWS Role used to perform operations in the AWS cloud
+  type: object
+  properties:
+    id:
+      description: The surrogate key for AWS roles
+      type: number
+    role_arn: &roleArn
+      description: AWS ARN of the role
+      type: string
+    environment: &environment
+      description: Name of the environment this role is associated with
+      type: string
+    namespace_id: &namespace_id
+      description: ID of the namespace this role is associated with
+      type: number
+    created_at:
+      description: The timestamp when the role was created
+      type: string
+      format: date-time
+    created_by:
+      description: The user that created the record
+      type: string
+  required:
+    - id
+    - role_arn
+    - environment
+    - namespace_id
+    - created_at
+    - created_by
+  additionalProperties: false
+
+write:
+  title: AWS Role
+  description: |
+    An AWS Role used to perform operations in the AWS cloud
+  type: object
+  properties:
+    role_arn:
+      <<: *roleArn
+    environment:
+      <<: *environment
+    namespace_id:
+      <<: *namespace_id
+  required:
+    - role_arn
+    - environment
+    - namespace_id
+  additionalProperties: false
