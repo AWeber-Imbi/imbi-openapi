@@ -55,7 +55,7 @@ paths:
         required: true
         schema:
           type: number
-      - name: includes
+      - name: include
         in: query
         description: Optionally expand the dependent project
         schema:
