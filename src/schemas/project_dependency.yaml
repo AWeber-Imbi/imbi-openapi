@@ -12,7 +12,22 @@ read:
     dependency_id:
       description: The ID of the project that is depended upon
       type: number
-  additionalProperties: false
+    dependency:
+      description: Optional project information of the dependency
+      type: object
+      properties:
+        id:
+          description: The ID of the project that is depended upon
+          type: number
+        name:
+          description: The project name
+          type: string
+        namespace_id:
+          description: The project namespace ID
+          type: number
+        project_type_id:
+          description: The project type ID
+          type: number
 
 write:
   title: Project

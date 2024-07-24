@@ -55,6 +55,13 @@ paths:
         required: true
         schema:
           type: number
+      - name: include
+        in: query
+        description: Optionally expand the dependent project
+        schema:
+          type: string
+          enum:
+            - dependency
   manage:
     get:
       summary: Get Record
