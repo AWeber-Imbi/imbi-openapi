@@ -77,6 +77,17 @@ paths:
       summary: Delete Record
       description: Remove a project dependency record
       tags: [Project Dependencies]
+      requestBody:
+        description: Specify optional automation slugs to run
+        content:
+          application/json: &deleteContent
+            schema:
+              $ref: '../schemas/project_dependency.yaml#/delete'
+            examples:
+              record:
+                $ref: '#/components/examples/delete'
+          application/msgpack:
+            <<: *deleteContent
       responses:
         '204': { $ref: '../components/responses.yaml#/RecordRemoved' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
@@ -107,6 +118,10 @@ components:
       summary: The payload used when creating a project dependency
       value:
         dependency_id: 1
+    delete:
+      summary: Optional automations to run
+      value:
+        automations: ['create-pagerduty-dependency']
 
   responses:
     Success:

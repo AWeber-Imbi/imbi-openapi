@@ -38,7 +38,7 @@ write:
   description: A record that indicates one project is dependent upon another
   type: object
   properties:
-    automations:
+    automations: &automations
       description: List of automations to run while creating the project dependency
       type: array
       items:
@@ -49,4 +49,13 @@ write:
       type: number
   required:
     - dependency_id
+  additionalProperties: false
+
+delete:
+  title: Project Dependency
+  description: A record that indicates one project is dependent upon another
+  type: object
+  properties:
+    automations:
+      <<: *automations
   additionalProperties: false
