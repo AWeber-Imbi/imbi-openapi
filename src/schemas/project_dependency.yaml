@@ -1,5 +1,5 @@
 read:
-  title: Project
+  title: Project Dependency
   description: A record that indicates one project is dependent upon another
   type: object
   properties:
@@ -34,7 +34,7 @@ read:
           type: number
 
 write:
-  title: Project
+  title: Project Dependency
   description: A record that indicates one project is dependent upon another
   type: object
   properties:
