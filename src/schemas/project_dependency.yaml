@@ -6,6 +6,10 @@ read:
     project_id:
       description: The ID of the project that has the dependency
       type: number
+    created_at:
+      description: The timestamp when the dependency was created
+      type: string
+      format: iso8601-timestamp
     created_by:
       description: The username indicating who created the record
       type: string
