@@ -1,11 +1,15 @@
 read:
-  title: Project
+  title: Project Dependency
   description: A record that indicates one project is dependent upon another
   type: object
   properties:
     project_id:
       description: The ID of the project that has the dependency
       type: number
+    created_at:
+      description: The timestamp when the dependency was created
+      type: string
+      format: iso8601-timestamp
     created_by:
       description: The username indicating who created the record
       type: string
@@ -30,13 +34,28 @@ read:
           type: number
 
 write:
-  title: Project
+  title: Project Dependency
   description: A record that indicates one project is dependent upon another
   type: object
   properties:
+    automations: &automations
+      description: List of automations to run while creating the project dependency
+      type: array
+      items:
+        type: string
+      nullable: true
     dependency_id:
       description: The ID of the project that is depended upon
       type: number
   required:
     - dependency_id
+  additionalProperties: false
+
+delete:
+  title: Project Dependency
+  description: A record that indicates one project is dependent upon another
+  type: object
+  properties:
+    automations:
+      <<: *automations
   additionalProperties: false

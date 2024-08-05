@@ -31,6 +31,8 @@ read:
         type: string
         enum:
           - create-project
+          - create-project-dependency
+          - remove-project-dependency
     applies_to:
       description: "Project type slugs that this automation can be run for"
       type: array
