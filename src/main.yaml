@@ -131,6 +131,8 @@ paths:
     { $ref: 'endpoints/project_sbom.yaml#/paths/collection' }
   /projects/{id}/secrets:
     { $ref: 'endpoints/project_secrets.yaml#/paths/collection' }
+  /projects/{id}/score-detail:
+    { '$ref': 'endpoints/project_score_detail.yaml#/paths' }
   /projects/{id}/score-history:
     { '$ref': 'endpoints/project_score_history.yaml#/paths/collection' }
   /projects/{id}/urls:
