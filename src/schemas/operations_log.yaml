@@ -56,7 +56,6 @@ read:
     description:
       description: The single line description of the change
       type: string
-      nullable: true
     link:
       description: An optional link for additional context to the entry
       type: string
@@ -116,7 +115,6 @@ write:
     description:
       description: The single line description of the change
       type: string
-      nullable: true
     link:
       description: An optional link for additional context to the entry
       type: string
