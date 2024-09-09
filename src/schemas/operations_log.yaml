@@ -133,6 +133,7 @@ write:
       type: string
       nullable: true
   required:
+    - recorded_at
     - recorded_by
     - environment
     - change_type
