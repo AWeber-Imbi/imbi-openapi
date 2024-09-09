@@ -67,7 +67,7 @@ read:
     ticket_slug:
       description: An optional slug of the ticket that the change was made for
       type: string
-      pattern: ^[\w-]+$
+      pattern: "^[-,\\w]+$"
       nullable: true
     version:
       description: An optional version that the change was made for
@@ -126,7 +126,7 @@ write:
     ticket_slug:
       description: An optional slug of the ticket that the change was made for
       type: string
-      pattern: ^[\w-]+$
+      pattern: "^[-,\\w]+$"
       nullable: true
     version:
       description: An optional version that the change was made for
