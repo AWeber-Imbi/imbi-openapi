@@ -28,6 +28,10 @@ read:
       type: string
       format: iso8601-timestamp
       nullable: true
+    performed_by:
+      description: Identifies the user that performed the action
+      type: string
+      nullable: true
     project_id:
       description: The ID of the project that was changed
       type: number
@@ -94,6 +98,9 @@ write:
       type: string
       format: iso8601-timestamp
       nullable: true
+    performed_by:
+      description: Identifies the user that performed the action
+      type: string
     project_id:
       description: The ID of the project that was changed
       type: number
