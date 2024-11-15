@@ -208,10 +208,18 @@ paths:
 
   search:
     post:
-      summary: Index the operations log
+      summary: Index operations log entries
       description: |-
-        Queue all operations log entries to be added to the opensearch index
+        Queue operations log entries to be added to the opensearch index. If the `id`
+        query parameter is not given, then all operations log entries are reindexed.
       tags: [Operations Log]
+      parameters:
+        - name: id
+          in: query
+          description: Optional operation entry ID(s) to reindex
+          required: false
+          schema:
+            type: integer
       responses:
         '200':
           description: The request to index the operations log was successful

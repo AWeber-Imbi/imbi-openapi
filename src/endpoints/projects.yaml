@@ -168,10 +168,18 @@ paths:
           type: number
   search:
     post:
-      summary: Index all projects
+      summary: Index projects
       description: |-
-        Queue all projects to be added to the opensearch index
+        Queue projects to be added to the opensearch index. If the `id` query
+        parameter is not given, then all projects are reindexed.
       tags: [Projects]
+      parameters:
+        - name: id
+          in: query
+          description: Optional project ID(s) to reindex
+          required: false
+          schema:
+            type: integer
       responses:
         '200':
           description: The request to index all projects was successful
