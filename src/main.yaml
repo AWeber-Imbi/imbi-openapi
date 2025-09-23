@@ -71,6 +71,10 @@ paths:
     { $ref: 'endpoints/notification_rules.yaml#/paths/collection' }
   /integrations/{integration_name}/notifications/{notification_name}/rules/{rule_name}:
     { $ref: 'endpoints/notification_rules.yaml#/paths/manage' }
+  /integrations/{integration_name}/notifications/{notification_name}/rules/{fact_type_id}/transformations:
+    { $ref: 'endpoints/notification_rule_transformations.yaml#/paths/collection' }
+  /integrations/{integration_name}/notifications/{notification_name}/rules/{fact_type_id}/transformations/{id}:
+    { $ref: 'endpoints/notification_rule_transformations.yaml#/paths/manage' }
   /operations-log: { '$ref': 'endpoints/operations_log.yaml#/paths/collection' }
   /operations-log/{id}:
     { '$ref': 'endpoints/operations_log.yaml#/paths/manage' }
