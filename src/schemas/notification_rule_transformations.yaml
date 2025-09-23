@@ -1,0 +1,50 @@
+read:
+  type: object
+  properties:
+    id:
+      type: integer
+      description: Surrogate key for transformation records
+    fact_type_id:
+      type: integer
+    integration_name:
+      type: string
+    notification_name:
+      type: string
+    input_value:
+      type: string
+    output_value:
+      type: string
+    created_at:
+      type: string
+      format: date-time
+    created_by:
+      type: string
+    last_modified_at:
+      type: string
+      format: date-time
+      nullable: true
+    last_modified_by:
+      type: string
+      nullable: true
+  required:
+    - id
+    - fact_type_id
+    - integration_name
+    - notification_name
+    - input_value
+    - output_value
+  additionalProperties: true
+
+write:
+  type: object
+  properties:
+    input_value:
+      type: string
+      description: The raw value extracted from the webhook payload to be transformed
+    output_value:
+      type: string
+      description: The transformed value to be stored as the project fact
+  required:
+    - input_value
+    - output_value
+  additionalProperties: false
