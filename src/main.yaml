@@ -45,6 +45,9 @@ paths:
   /cookie-cutters/{name}: { $ref: 'endpoints/cookie_cutter.yaml#/paths/manage' }
   /environments: { $ref: 'endpoints/environment.yaml#/paths/collection' }
   /environments/{name}: { $ref: 'endpoints/environment.yaml#/paths/manage' }
+  /github/auth: { $ref: 'endpoints/github.yaml#/paths/auth' }
+  /github/projects/{project_id}/tags: { $ref: 'endpoints/github.yaml#/paths/project_tags' }
+  /github/projects/{project_id}/deployments: { $ref: 'endpoints/github.yaml#/paths/project_deployments' }
   /gitlab/auth: { $ref: 'endpoints/gitlab.yaml#/paths/auth' }
   /gitlab/namespaces: { $ref: 'endpoints/gitlab.yaml#/paths/namespaces' }
   /gitlab/projects: { $ref: 'endpoints/gitlab.yaml#/paths/projects' }
