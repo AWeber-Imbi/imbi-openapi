@@ -5,6 +5,9 @@ properties:
   name:
     description: The display name for a environment
     type: string
+  slug:
+    description: URL-safe environment identifier
+    type: string
   description:
     description: A description of the environment
     type: string
@@ -14,5 +17,6 @@ properties:
     type: string
 required:
   - name
+  - slug
   - icon_class
 additionalProperties: false
