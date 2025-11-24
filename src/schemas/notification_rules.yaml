@@ -5,6 +5,10 @@ read:
       type: integer
     pattern:
       type: string
+    filter_expression:
+      type: string
+      description: CEL expression for filtering notifications
+      nullable: true
   required:
     - fact_type_id
     - pattern
