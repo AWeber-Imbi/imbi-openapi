@@ -1,7 +1,65 @@
 read:
   title: Project Fact Type
   description: |
-    Defines types of facts that can be recorded about a project
+    Defines types of facts that can be recorded about a project.
+    This schema is used for collection responses.
+  type: object
+  properties:
+    id:
+      description: The surrogate ID
+      type: number
+    name:
+      description: The project fact type name
+      type: string
+    project_type_ids:
+      description: An array of Project Type ids to associate the fact type with
+      type: array
+      items:
+        type: number
+      uniqueItems: true
+    fact_type:
+      description: Indicates how a fact value is validated and scored
+      type: string
+      enum:
+        - enum
+        - free-form
+        - range
+    description:
+      description: Provides additional context about the fact typee
+      type: string
+      nullable: true
+    data_type:
+      description: The data type for the value
+      type: string
+      enum:
+        - boolean
+        - date
+        - decimal
+        - integer
+        - string
+        - timestamp
+    ui_options:
+      description: An array of values that are used in the UI for display purposes
+      type: array
+      items:
+        type: string
+        enum:
+          - display-as-badge
+          - display-as-percentage
+          - hidden
+          - read-only
+      uniqueItems: true
+    weight:
+      description: The weight of the fact type when computing a project score
+      type: number
+      default: 0
+  additionalProperties: false
+
+record:
+  title: Project Fact Type Record
+  description: |
+    Defines types of facts that can be recorded about a project.
+    This schema is used for single record responses and includes audit fields.
   type: object
   properties:
     id:

@@ -1,7 +1,33 @@
 read:
   title: Project Fact Type Range Value
   description: |
-    Defines options that are available for an range project fact type
+    Defines options that are available for an range project fact type.
+    This schema is used for collection responses.
+  type: object
+  properties:
+    id:
+      description: The surrogate key for the fact type option
+      type: number
+    fact_type_id:
+      description: The ID of the fact type the option is for
+      type: string
+    min_value:
+      description: The min value for the range
+      type: number
+    max_value:
+      description: The max value for the range
+      type: number
+    score:
+      description: The score value for the option
+      type: number
+      default: 0
+  additionalProperties: false
+
+record:
+  title: Project Fact Type Range Value Record
+  description: |
+    Defines options that are available for an range project fact type.
+    This schema is used for single record responses and includes audit fields.
   type: object
   properties:
     id:

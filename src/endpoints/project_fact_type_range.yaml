@@ -133,7 +133,7 @@ components:
       content:
         application/json: &responsesSuccess
           schema:
-            $ref: '../schemas/project_fact_type_range.yaml#/read'
+            $ref: '../schemas/project_fact_type_range.yaml#/record'
           examples:
             record:
               $ref: '#/components/examples/read'

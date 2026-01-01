@@ -166,7 +166,7 @@ components:
       content:
         application/json: &componentResponsesSuccess
           schema:
-            $ref: '../schemas/project_fact_type.yaml#/read'
+            $ref: '../schemas/project_fact_type.yaml#/record'
           examples:
             record:
               $ref: '#/components/examples/read'

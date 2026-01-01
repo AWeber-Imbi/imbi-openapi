@@ -125,7 +125,7 @@ components:
       content:
         application/json: &responsesSuccess
           schema:
-            $ref: '../schemas/project_type.yaml#/read'
+            $ref: '../schemas/project_type.yaml#/record'
           examples:
             record:
               $ref: '#/components/examples/read'

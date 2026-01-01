@@ -1,7 +1,33 @@
 read:
   title: Project Fact Type Enum Value
   description: |
-    Defines options that are available for an enum project fact type
+    Defines options that are available for an enum project fact type.
+    This schema is used for collection responses.
+  type: object
+  properties:
+    id:
+      description: The surrogate key for the fact type option
+      type: number
+    fact_type_id:
+      description: The ID of the fact type the option is for
+      type: string
+    value:
+      description: The option value
+      type: string
+    icon_class:
+      description: An icon that is specific to the fact type option
+      type: string
+    score:
+      description: The score value for the option
+      type: number
+      default: 0
+  additionalProperties: false
+
+record:
+  title: Project Fact Type Enum Value Record
+  description: |
+    Defines options that are available for an enum project fact type.
+    This schema is used for single record responses and includes audit fields.
   type: object
   properties:
     id:
