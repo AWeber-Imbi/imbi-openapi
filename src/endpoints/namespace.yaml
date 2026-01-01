@@ -62,11 +62,12 @@ paths:
   manage:
     get:
       summary: Get Record
-      description: Retrieve a namespace record
+      description: Retrieve a namespace record. Requires admin permission.
       tags: [Namespaces]
       responses:
         '200': { $ref: '#/components/responses/Success' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '403': { $ref: '../components/responses.yaml#/Forbidden' }
         '404': { $ref: '../components/responses.yaml#/NotFound' }
     patch:
       summary: Update Record
@@ -81,15 +82,17 @@ paths:
         '304': { $ref: '../components/responses.yaml#/NoChanges' }
         '400': { $ref: '../components/responses.yaml#/RequestError' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '403': { $ref: '../components/responses.yaml#/Forbidden' }
         '404': { $ref: '../components/responses.yaml#/NotFound' }
         '409': { $ref: '../components/responses.yaml#/Conflict' }
     delete:
       summary: Delete Record
-      description: Remove a namespace record
+      description: Remove a namespace record. Requires admin permission.
       tags: [Namespaces]
       responses:
         '204': { $ref: '../components/responses.yaml#/RecordRemoved' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '403': { $ref: '../components/responses.yaml#/Forbidden' }
         '404': { $ref: '../components/responses.yaml#/NotFound' }
     parameters:
       - name: id
