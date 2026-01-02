@@ -12,7 +12,7 @@ paths:
             type: integer
         - name: project_type_id
           in: query
-          description: Filter by Namespace ID
+          description: Filter by Project Type ID
           schema:
             type: integer
         - name: name

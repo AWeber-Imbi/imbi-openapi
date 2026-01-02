@@ -55,14 +55,14 @@ components:
       summary: All the current facts for a project
       value:
         - fact_type_id: 1
-          fact_name: Programming Language
+          name: Programming Language
           recorded_at: 2021-03-01T12:00:00Z
           recorded_by: test_user
           value: Python 3.9
           score: 100
           weight: 25
         - fact_type_id: 2
-          fact_name: Test Coverage
+          name: Test Coverage
           recorded_at: 2021-03-01T12:00:01Z
           recorded_by: test_user
           value: 95.6

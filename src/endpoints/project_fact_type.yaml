@@ -93,11 +93,12 @@ paths:
   manage:
     get:
       summary: Get Record
-      description: Retrieve a project fact type record
+      description: Retrieve a project fact type record. Requires admin permission.
       tags: [Fact Types]
       responses:
         '200': { $ref: '#/components/responses/Success' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '403': { $ref: '../components/responses.yaml#/Forbidden' }
         '404': { $ref: '../components/responses.yaml#/NotFound' }
     patch:
       summary: Update Record
@@ -112,15 +113,17 @@ paths:
         '304': { $ref: '../components/responses.yaml#/NoChanges' }
         '400': { $ref: '../components/responses.yaml#/RequestError' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '403': { $ref: '../components/responses.yaml#/Forbidden' }
         '404': { $ref: '../components/responses.yaml#/NotFound' }
         '409': { $ref: '../components/responses.yaml#/Conflict' }
     delete:
       summary: Delete Record
-      description: Remove a project fact type record
+      description: Remove a project fact type record. Requires admin permission.
       tags: [Fact Types]
       responses:
         '204': { $ref: '../components/responses.yaml#/RecordRemoved' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '403': { $ref: '../components/responses.yaml#/Forbidden' }
         '404': { $ref: '../components/responses.yaml#/NotFound' }
     parameters:
       - name: fact_type_id
@@ -166,7 +169,7 @@ components:
       content:
         application/json: &componentResponsesSuccess
           schema:
-            $ref: '../schemas/project_fact_type.yaml#/read'
+            $ref: '../schemas/project_fact_type.yaml#/record'
           examples:
             record:
               $ref: '#/components/examples/read'

@@ -6,7 +6,7 @@ read:
     fact_type_id:
       description: The ID of the fact type that is being set
       type: integer
-    fact_name:
+    name:
       type: string
     recorded_at:
       description: When the fact was recorded
@@ -29,6 +29,17 @@ read:
     weight:
       description: The weight of the score against all the other project facts
       type: integer
+    ui_options:
+      description: An array of values that are used in the UI for display purposes
+      type: array
+      items:
+        type: string
+        enum:
+          - display-as-badge
+          - display-as-percentage
+          - hidden
+          - read-only
+      uniqueItems: true
   additionalProperties: false
 
 write:

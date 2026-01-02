@@ -56,11 +56,12 @@ paths:
   manage:
     get:
       summary: Get Record
-      description: Retrieve a project type record
+      description: Retrieve a project type record. Requires admin permission.
       tags: [Project Types]
       responses:
         '200': { $ref: '#/components/responses/Success' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '403': { $ref: '../components/responses.yaml#/Forbidden' }
         '404': { $ref: '../components/responses.yaml#/NotFound' }
     patch:
       summary: Update Record
@@ -75,15 +76,17 @@ paths:
         '304': { $ref: '../components/responses.yaml#/NoChanges' }
         '400': { $ref: '../components/responses.yaml#/RequestError' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '403': { $ref: '../components/responses.yaml#/Forbidden' }
         '404': { $ref: '../components/responses.yaml#/NotFound' }
         '409': { $ref: '../components/responses.yaml#/Conflict' }
     delete:
       summary: Delete Record
-      description: Remove a project type record
+      description: Remove a project type record. Requires admin permission.
       tags: [Project Types]
       responses:
         '204': { $ref: '../components/responses.yaml#/RecordRemoved' }
         '401': { $ref: '../components/responses.yaml#/Unauthorized' }
+        '403': { $ref: '../components/responses.yaml#/Forbidden' }
         '404': { $ref: '../components/responses.yaml#/NotFound' }
     parameters:
       - name: id
@@ -125,7 +128,7 @@ components:
       content:
         application/json: &responsesSuccess
           schema:
-            $ref: '../schemas/project_type.yaml#/read'
+            $ref: '../schemas/project_type.yaml#/record'
           examples:
             record:
               $ref: '#/components/examples/read'
